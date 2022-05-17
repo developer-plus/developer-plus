@@ -27,5 +27,9 @@
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": "eslint --fix"
+  },
+  "dependencies": {
+    "@types/animejs": "^3.1.4",
+    "animejs": "^3.2.1"
   }
 }
