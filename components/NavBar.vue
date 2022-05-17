@@ -1,19 +1,19 @@
 <template>
-  <div class="sticky top-0 w-80px h-screen border-r border-gray-200">
+  <div class="sticky top-0 w-80px h-screen border-r border-gray-200 flex flex-col justify-center items-end pr-2 gap-8">
     <nuxt-link to="/">
-      Home
+      <icon-home />
     </nuxt-link>
     <nuxt-link to="/plans">
-      Plans
+      <icon-todo />
     </nuxt-link>
     <nuxt-link to="/weekly">
-      Weekly
+      <icon-weekly />
     </nuxt-link>
     <nuxt-link to="/bookmarks">
-      Bookmarks
+      <icon-book-marks />
     </nuxt-link>
     <nuxt-link to="/about">
-      About
+      <icon-auto />
     </nuxt-link>
   </div>
 </template>
