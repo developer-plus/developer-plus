@@ -51,7 +51,7 @@
       </h3>
 
       <div class="mt-16px">
-        <a v-for="item in 15" :key="item" href="https://github.com/cuixiaorui/mini-vue" target="_blank">
+        <a v-for="item in 8" :key="item" href="https://github.com/cuixiaorui/mini-vue" target="_blank">
           <div class="px-8px py-8px mt-8px bg-primary">
             <h2>mini-vue</h2>
             <p class="opacity-70">developer-plus 梦开始的地方。</p>
