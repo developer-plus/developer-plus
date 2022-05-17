@@ -4,6 +4,12 @@ interface IMember {
   name: string
   position: string
   sign: string
+  github: string
+}
+
+interface IContributor {
+  avatar: string
+  github: string
 }
 
 const coreMembers = reactive<IMember[]>([
@@ -11,39 +17,55 @@ const coreMembers = reactive<IMember[]>([
     avatar: 'https://avatars.githubusercontent.com/u/53554371?v=4',
     name: 'Hongbusi',
     position: '发起人',
-    sign: '心若不动，风又奈何'
+    sign: '心若不动，风又奈何',
+    github: 'https://github.com/Hongbusi'
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/49969959?v=4',
     name: 'alexzhang1030',
     position: '核心成员',
-    sign: '心若不动，风又奈何'
+    sign: '心若不动，风又奈何',
+    github: ''
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/66043405?v=4',
     name: 'TickHeart',
     position: '核心成员',
-    sign: '心若不动，风又奈何'
+    sign: '心若不动，风又奈何',
+    github: ''
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/20129035?v=4',
     name: 'RainyNight9',
     position: '核心成员',
-    sign: '心若不动，风又奈何'
+    sign: '心若不动，风又奈何',
+    github: ''
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/22882957?v=4',
     name: 'zgsgs',
     position: '核心成员',
-    sign: '心若不动，风又奈何'
+    sign: '心若不动，风又奈何',
+    github: ''
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/53544980?v=4',
     name: 'CoderCrush',
     position: '核心成员',
-    sign: '心若不动，风又奈何'
+    sign: '心若不动，风又奈何',
+    github: ''
   },
-  {}, {}, {}, {}])
+  {},
+  {},
+  {},
+  {}
+])
+
+const contributor = reactive<IContributor[]>([{}])
+
+const goGithub = (github: string) => {
+  github && window.open(github)
+}
 </script>
 
 <template>
@@ -58,19 +80,40 @@ const coreMembers = reactive<IMember[]>([
     <div>
       <div>核心成员</div>
       <div flex flex-wrap justify-start>
-        <div v-for="(item, index) in coreMembers" :key="item.name + index" h-100px w-32% flex mr-1% mt-5 p-10px bg-gray-300 rd-5px>
-          <img rd-50% bg-gray-600 w-58px h-58px :src="item.avatar">
-          <div>
-            <div text-14px>
-              {{ item.name }} <span text-12px>{{ item.position }}</span>
+        <div
+          v-for="(item, index) in coreMembers"
+          :key="item.name + index"
+          h-100px
+          w-32%
+          flex
+          mr-1%
+          mt-10px
+          p-10px
+          bg-gray-300
+          rd-5px
+          cursor-pointer
+          @click="goGithub(item.github)"
+        >
+          <img rd-50% bg-gray-600 w-58px h-58px mr-5px :src="item.avatar">
+          <div flex-1>
+            <div flex justify-between>
+              <div text-14px w-60% truncate>
+                {{ item.name }}
+              </div>
+              <div text-12px>
+                {{ item.position }}
+              </div>
             </div>
-            <div>{{ item.sign }}</div>
+            <div text-14px mt-10px>
+              {{ item.sign }}
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div>
       <div>贡献者</div>
+      <img v-for="(item, index) in contributor" :key="index" src="" alt="">
     </div>
   </div>
 </template>
