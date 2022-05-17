@@ -13,6 +13,7 @@ const eleInfo = ref<EleInfo[]>([])
 const route = useRoute()
 
 function collectEleInfo() {
+  eleInfo.value.length = 0
   const { children } = navRef.value
   for (let i = 0; i < children.length; i++) {
     const child = children[i]
@@ -37,9 +38,18 @@ function boxToElePosition(name: string) {
     top: info.mid - height / 2
   })
 }
+
+function resize() {
+  collectEleInfo()
+  boxToElePosition(route.name as string)
+}
 onMounted(() => {
   collectEleInfo()
   dep()
+  window.addEventListener('resize', resize)
+})
+onUnmounted(() => {
+  window.removeEventListener('resize', resize)
 })
 </script>
 
