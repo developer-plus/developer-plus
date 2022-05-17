@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import animejs from 'animejs'
+import { Announcement } from '~/data/Home/index.json'
 
-const str = '@developer-plus/mini-unocss 发布啦！'
+const str = Announcement.title
 
 enum Theme {
   dark = '#000',
@@ -38,13 +39,17 @@ function initAnimate() {
 onMounted(() => {
   initAnimate()
 })
+
+function open() {
+  window.open(Announcement.link)
+}
 </script>
 
 <template>
   <div
     class="box" w-full flex="~" justify="center" items="center" text-bold h-40px text-19px rounded-10px
     bg="gray-200/70" dark:bg="gray-200/20" dark:text-white cursor-pointer hover:transform="scale-95" transition="all"
-    text-black select-none mt-20px
+    text-black select-none mt-20px @click="open"
   >
     <span v-for="item in str.split('')" :key="item">
       {{ item }}

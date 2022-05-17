@@ -1,8 +1,9 @@
 <script setup lang="ts">
-// import Data from
+import { TypeWriter as data } from '~/data/Home/index.json'
 </script>
 
 <template>
+  <div class="element" />
   <div class="mt-5">
     <div flex="~" justify="start" items="baseline">
       <div text="48px">
@@ -21,7 +22,7 @@
     </div>
     <div mt="20px" text="36px">
       我们是
-      <!-- <TypeWriter /> -->
+      <type-writer inline-flex :strings="data" />
     </div>
   </div>
 </template>

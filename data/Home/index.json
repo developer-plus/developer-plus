@@ -6,5 +6,9 @@
     "是 Developer Plus",
     "热爱技术",
     "热爱生活"
-  ]
+  ],
+  "Announcement": {
+    "title": "@developer-plus/mini-unocss 已发布！",
+    "link": "https://github.com/developer-plus/mini-unocss"
+  }
 }

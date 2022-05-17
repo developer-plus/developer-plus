@@ -1,72 +1,122 @@
 <script setup lang="ts">
-type TypedString = string | {
-  title: string
-  // 停顿的字符数
-  stop: number | number[]
+import { promiseTimeout } from '@vueuse/core'
+
+const strs = [
+  '极客',
+  '冒险家',
+  'superstar'
+]
+let currentIndex = $ref(0)
+const str = $computed(() => strs[currentIndex])
+const charRef = $ref<HTMLElement[]>()
+const typeWriterRef = $ref<HTMLElement>()
+
+async function setDelay(charRef: HTMLElement[], cb?: (e: HTMLElement) => void) {
+  charRef.forEach((charEl, i) => {
+    cb && cb(charEl)
+    charEl.style.setProperty('--delay', `${(i + 1) * 0.3}s`)
+  })
 }
 
-interface Props {
-  // 展示的文字
-  strings: TypedString[]
+function handleAnimationEnd(target: HTMLElement, cb: (e: AnimationEvent, cb: () => void) => void) {
+  target.addEventListener('animationend', function fn(e) {
+    cb(e, () => {
+      target.removeEventListener('animationend', fn)
+    })
+  })
 }
 
-const props = defineProps<Props>()
+async function handleNext() {
+  if (currentIndex === strs.length - 1)
+    currentIndex = 0
+  else currentIndex += 1
+  init(typeWriterRef, charRef)
+}
 
-let displayStr = $ref('')
+function init(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
+  setDelay(charRef, (e) => {
+    e.classList.remove('end')
+    e.classList.add('init')
+  })
+  handleAnimationEnd(typeWriterRef, (e, cb) => {
+    if (e.target === charRef[charRef.length - 1]) {
+      typeWriterRef.classList.add('ended')
+      cb()
+      reverse(typeWriterRef, charRef)
+    }
+  })
+}
+
+async function reverse(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
+  await promiseTimeout(1500)
+  typeWriterRef.classList.remove('ended')
+  setDelay(charRef.reverse(), (e) => {
+    e.style.width = '2ch'
+    e.classList.remove('init')
+    e.classList.add('end')
+  })
+  handleAnimationEnd(typeWriterRef, (e, cb) => {
+    if (e.target === charRef[0]) {
+      cb()
+      typeWriterRef.classList.add('ended')
+      handleNext()
+    }
+  })
+}
 
 onMounted(() => {
-
+  init(typeWriterRef, charRef)
 })
-
-let currentIndex = 0
-
-function init() {
-  if (currentIndex === props.strings.length)
-    resetIndex()
-  const currentStrEl = props.strings[currentIndex]
-  displayStr = typeof currentStrEl === 'string' ? currentStrEl : currentStrEl.title
-}
-
-init()
-
-function currentEnd() {
-
-}
-
-function resetIndex() {
-  currentIndex = 0
-}
 </script>
 
 <template>
-  <div font="monospace" position="relative" inline="flex" width="fit-content" class="typewriter">
-    <span
-      v-for="(s, i) in displayStr" :key="i" class="inline-block" overflow="hidden" w="0ch" font="weight-600"
-      text="center"
-    >{{ s }}</span>
+  <div ref="typeWriterRef" class="type-writer" font-mono relative>
+    <span v-for="(s, i) in str" :key="i" ref="charRef" inline-block overflow-hidden w-0ch>
+      {{ s }}
+    </span>
   </div>
 </template>
 
 <style scoped>
-.typewriter::after {
-  content: "";
-  display: inline;
+.type-writer span {
+  --delay: 10s;
+}
+
+.type-writer span.init {
+  --delay: 10s;
+  animation: text-in 0.1s ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+.type-writer span.end {
+  animation: text-out 0.1s ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+.type-writer::after {
+  content: '';
+  display: inline-block;
   position: absolute;
-  width: 2px;
-  height: 2ch;
-  top: 9%;
+  width: 0.3rem;
+  height: 54px;
+  line-height: 2rem;
   background-color: #000;
   border-radius: 2px;
-  right: -0.5ch;
+  right: -10px;
 }
 
-.typewriter::after {
-  animation: 1.1s cursor steps(2, jump-none) infinite;
+.type-writer.ended::after {
+  animation: cursor 1.1s steps(2, jump-none) infinite;
 }
 
-.typewriter span {
-  animation: 0.1s text-in ease-in-out forwards;
-  animation-delay: var(--delay);
+@keyframes cursor {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes text-in {
@@ -86,16 +136,6 @@ function resetIndex() {
 
   to {
     width: 0ch;
-  }
-}
-
-@keyframes cursor {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 </style>
