@@ -5,20 +5,30 @@ specifiers:
   '@commitlint/config-conventional': ^17.0.0
   '@developer-plus/eslint-config': 0.1.1
   '@iconify-json/carbon': ^1.1.4
+  '@iconify-json/ic': ^1.1.4
+  '@iconify-json/ri': ^1.1.1
   '@nuxtjs/color-mode': ^3.0.3
+  '@types/animejs': ^3.1.4
   '@unocss/nuxt': ^0.33.5
   '@vueuse/nuxt': ^8.5.0
+  animejs: ^3.2.1
   eslint: ^8.15.0
   husky: ^8.0.1
   lint-staged: ^12.4.1
   nuxt: 3.0.0-rc.3
+
+dependencies:
+  animejs: 3.2.1
 
 devDependencies:
   '@commitlint/cli': 17.0.0
   '@commitlint/config-conventional': 17.0.0
   '@developer-plus/eslint-config': 0.1.1_eslint@8.15.0
   '@iconify-json/carbon': 1.1.4
+  '@iconify-json/ic': 1.1.4
+  '@iconify-json/ri': 1.1.1
   '@nuxtjs/color-mode': 3.0.3
+  '@types/animejs': 3.1.4
   '@unocss/nuxt': 0.33.5
   '@vueuse/nuxt': 8.5.0
   eslint: 8.15.0
@@ -656,6 +666,18 @@ packages:
       '@iconify/types': 1.1.0
     dev: true
 
+  /@iconify-json/ic/1.1.4:
+    resolution: {integrity: sha512-NkcyCh3VHwm3L19Ys4PDnbJmMoSE6vd83xjfWofmoeKKebs4tktz/LhPIy9vcaDqRENTNVtDORQdv0e+HCOjSg==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/ri/1.1.1:
+    resolution: {integrity: sha512-H2Bvtew65rCw275lZaLk5sxTmmxa9kpd2i2FOVncDLa/Wpn9L6AnTZhR1NzzPb6iqK2D8HE4Y/wcVr6o0KjMlw==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
   /@iconify/types/1.1.0:
     resolution: {integrity: sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw==}
     dev: true
@@ -756,11 +778,11 @@ packages:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
     dev: true
 
-  /@nuxt/kit-edge/3.0.0-rc.3-27540667.2886dfd:
-    resolution: {integrity: sha512-zATunvj3gHFsGIdj8SF/9gJvrKMDvafi7ZZcKMI9Y3bD7ULwe39mLH8FPKnsuV1MZiqhN41Cbpesv7DK+TsBkA==}
+  /@nuxt/kit-edge/3.0.0-rc.3-27545866.cd37a21:
+    resolution: {integrity: sha512-iBU1wEwj2peSN/sS4QIuZfUQluplh7YCarvz+MCUcybdOw17kXALPQjUY6q5ISXmNsTiY/fLqHvYz3k6UjkS5w==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.3-27540667.2886dfd
+      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.3-27545866.cd37a21
       c12: 0.2.7
       consola: 2.15.3
       defu: 6.0.0
@@ -876,8 +898,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-rc.3-27540667.2886dfd:
-    resolution: {integrity: sha512-UbkbqhNap1Urxq+gGp9cm3+pb6h6xKB2k654bPtH3L5PuWohJFwIzMRJnyzpKN9xak3OoBue8HYK3ugk1geI1w==}
+  /@nuxt/schema-edge/3.0.0-rc.3-27545866.cd37a21:
+    resolution: {integrity: sha512-7EOInYwj96i688RLlYKy1CIOM3Lo1GQkYNPfbNcD1k74QeQorUqn0/Tr5Cyce3/SqZ77c8PcQ4bc3p7PNPu9XA==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
       c12: 0.2.7
@@ -1021,7 +1043,7 @@ packages:
   /@nuxtjs/color-mode/3.0.3:
     resolution: {integrity: sha512-FQVyLgRQ4C4C5NmTBrFRNm+LNjgT4cPFqyqfoRxD6hfVZhLxWJfKPGUaT8H/BCeBzkZZ29583MG9GqyDX7rnNg==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.3-27540667.2886dfd
+      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.3-27545866.cd37a21
       defu: 5.0.1
       lodash.template: 4.5.0
       pathe: 0.2.0
@@ -1156,6 +1178,10 @@ packages:
 
   /@tsconfig/node16/1.0.2:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
+    dev: true
+
+  /@types/animejs/3.1.4:
+    resolution: {integrity: sha512-WUjeFT2SXd6intfE6cg6eL1jk/JL88JqM2gC4WqO4iHLmbCvHUq6aoLK13lGpDWs4FtS2PHoYraJZ0dEx99Dyg==}
     dev: true
 
   /@types/estree/0.0.39:
@@ -1788,6 +1814,10 @@ packages:
       require-from-string: 2.0.2
       uri-js: 4.4.1
     dev: true
+
+  /animejs/3.2.1:
+    resolution: {integrity: sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==}
+    dev: false
 
   /ansi-escapes/4.3.2:
     resolution: {integrity: sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==}
