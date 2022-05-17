@@ -46,19 +46,19 @@ onMounted(() => {
 <template>
   <div ref="navRef" class="sticky top-0 w-80px h-screen border-r border-gray-200 flex flex-col justify-center items-end pr-2 gap-8">
     <nuxt-link to="/" data-key="index">
-      <icon-home />
+      <div class="i-ri-home-smile-line text-xl" />
     </nuxt-link>
     <nuxt-link to="/plans" data-key="plans">
-      <icon-todo />
+      <div class="i-ri-todo-line text-xl" />
     </nuxt-link>
     <nuxt-link to="/weekly" data-key="weekly">
-      <icon-weekly />
+      <div class="i-ic-baseline-menu-book text-xl" />
     </nuxt-link>
     <nuxt-link to="/bookmarks" data-key="bookmarks">
-      <icon-book-marks />
+      <div class="i-ic-round-bookmarks text-xl" />
     </nuxt-link>
     <nuxt-link to="/about" data-key="about">
-      <icon-auto />
+      <div class="i-ri-team-line text-xl" />
     </nuxt-link>
     <div ref="boxRef" class="w-2 h-2 bg-light-900 rounded-full absolute top-2 right-[-0.3rem]" />
   </div>

@@ -29,6 +29,8 @@
     "*.{vue,js,jsx,ts,tsx}": "eslint --fix"
   },
   "dependencies": {
+    "@iconify-json/ic": "^1.1.4",
+    "@iconify-json/ri": "^1.1.1",
     "@types/animejs": "^3.1.4",
     "animejs": "^3.2.1"
   }
