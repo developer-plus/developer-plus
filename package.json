@@ -1,15 +1,13 @@
 {
   "private": true,
   "packageManager": "pnpm@7.0.1",
-  "eslintConfig": {
-    "extends": "@developer-plus"
-  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "lint-staged",
+    "lint:check": "eslint .",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -27,5 +25,8 @@
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": "eslint --fix"
+  },
+  "eslintConfig": {
+    "extends": "@developer-plus"
   }
 }
