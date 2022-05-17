@@ -5,7 +5,7 @@
         developer-plus
       </h2>
       <div class="flex items-center text-lg">
-        <a class="icon-btn i-carbon-logo-github mr-8px" href="https://github.com/developer-plus" target="_blank" />
+        <a class="icon-primary i-carbon-logo-github mr-8px" href="https://github.com/developer-plus" target="_blank" />
         <dark-toggle />
       </div>
     </div>
@@ -30,16 +30,16 @@
       </h3>
 
       <div class="flex justify-between flex-wrap mt-16px">
-        <button class="btn mt-8px">
+        <button class="btn-primary mt-8px">
           周刊投稿
         </button>
-        <button class="btn mt-8px">
+        <button class="btn-primary mt-8px">
           新建书签
         </button>
-        <button class="btn mt-8px">
+        <button class="btn-primary mt-8px">
           新增计划
         </button>
-        <button class="btn mt-8px">
+        <button class="btn-primary mt-8px">
           加入我们
         </button>
       </div>
@@ -52,8 +52,8 @@
 
       <div class="mt-16px">
         <a v-for="item in 15" :key="item" href="https://github.com/cuixiaorui/mini-vue" target="_blank">
-          <div class="px-8px py-8px mt-8px bg-gray-200 rounded opacity-70">
-            <h2 class="font-500">mini-vue</h2>
+          <div class="px-8px py-8px mt-8px bg-primary">
+            <h2>mini-vue</h2>
             <p class="opacity-70">developer-plus 梦开始的地方。</p>
           </div>
         </a>

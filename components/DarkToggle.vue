@@ -6,5 +6,5 @@ function toggleDark() {
 </script>
 
 <template>
-  <div class="icon-btn dark:i-carbon-moon i-carbon-sun" @click="toggleDark" />
+  <div class="icon-primary dark:i-carbon-moon i-carbon-sun" @click="toggleDark" />
 </template>
