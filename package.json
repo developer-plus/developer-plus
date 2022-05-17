@@ -17,7 +17,10 @@
     "@commitlint/config-conventional": "^17.0.0",
     "@developer-plus/eslint-config": "0.1.1",
     "@iconify-json/carbon": "^1.1.4",
+    "@iconify-json/ic": "^1.1.4",
+    "@iconify-json/ri": "^1.1.1",
     "@nuxtjs/color-mode": "^3.0.3",
+    "@types/animejs": "^3.1.4",
     "@unocss/nuxt": "^0.33.5",
     "@vueuse/nuxt": "^8.5.0",
     "eslint": "^8.15.0",
@@ -29,9 +32,9 @@
     "*.{vue,js,jsx,ts,tsx}": "eslint --fix"
   },
   "dependencies": {
-    "@iconify-json/ic": "^1.1.4",
-    "@iconify-json/ri": "^1.1.1",
-    "@types/animejs": "^3.1.4",
     "animejs": "^3.2.1"
+  },
+  "eslintConfig": {
+    "extends": "@developer-plus"
   }
 }

@@ -18,9 +18,6 @@ specifiers:
   nuxt: 3.0.0-rc.3
 
 dependencies:
-  '@iconify-json/ic': 1.1.4
-  '@iconify-json/ri': 1.1.1
-  '@types/animejs': 3.1.4
   animejs: 3.2.1
 
 devDependencies:
@@ -28,7 +25,10 @@ devDependencies:
   '@commitlint/config-conventional': 17.0.0
   '@developer-plus/eslint-config': 0.1.1_eslint@8.15.0
   '@iconify-json/carbon': 1.1.4
+  '@iconify-json/ic': 1.1.4
+  '@iconify-json/ri': 1.1.1
   '@nuxtjs/color-mode': 3.0.3
+  '@types/animejs': 3.1.4
   '@unocss/nuxt': 0.33.5
   '@vueuse/nuxt': 8.5.0
   eslint: 8.15.0
@@ -670,16 +670,17 @@ packages:
     resolution: {integrity: sha512-NkcyCh3VHwm3L19Ys4PDnbJmMoSE6vd83xjfWofmoeKKebs4tktz/LhPIy9vcaDqRENTNVtDORQdv0e+HCOjSg==}
     dependencies:
       '@iconify/types': 1.1.0
-    dev: false
+    dev: true
 
   /@iconify-json/ri/1.1.1:
     resolution: {integrity: sha512-H2Bvtew65rCw275lZaLk5sxTmmxa9kpd2i2FOVncDLa/Wpn9L6AnTZhR1NzzPb6iqK2D8HE4Y/wcVr6o0KjMlw==}
     dependencies:
       '@iconify/types': 1.1.0
-    dev: false
+    dev: true
 
   /@iconify/types/1.1.0:
     resolution: {integrity: sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw==}
+    dev: true
 
   /@iconify/utils/1.0.32:
     resolution: {integrity: sha512-m+rnw7qKHq/XF7DAi4BcFoEAcXBfqqMgQJh8brGEHeqE/RUvgDMjmxsHgWnVpFsG+VmjGyAiI7nwXdliCwEU0Q==}
@@ -1181,7 +1182,7 @@ packages:
 
   /@types/animejs/3.1.4:
     resolution: {integrity: sha512-WUjeFT2SXd6intfE6cg6eL1jk/JL88JqM2gC4WqO4iHLmbCvHUq6aoLK13lGpDWs4FtS2PHoYraJZ0dEx99Dyg==}
-    dev: false
+    dev: true
 
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
