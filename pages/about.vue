@@ -9,7 +9,17 @@ interface IMember {
 
 interface IContributor {
   avatar: string
+  name: string
   github: string
+}
+
+const options = {
+  title: '关于我们',
+  subtitle: 'About us',
+  description: '来源于开发者，服务于开发者。',
+  btnLink: 'https://github.com/Hongbusi/developer-plus',
+  btnText: '按钮',
+  githubLink: 'https://github.com/Hongbusi/developer-plus'
 }
 
 const coreMembers = reactive<IMember[]>([
@@ -61,7 +71,17 @@ const coreMembers = reactive<IMember[]>([
   {}
 ])
 
-const contributor = reactive<IContributor[]>([{}])
+const contributor = reactive<IContributor[]>([
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {}
+])
 
 const goGithub = (github: string) => {
   github && window.open(github)
@@ -70,15 +90,18 @@ const goGithub = (github: string) => {
 
 <template>
   <div class="about mt-5">
-    <div class="h-40px">
-      关于我们 <span>About us</span>
-    </div>
-    <div>源于开发者，服务于开发者。</div>
+    <page-wrapper v-bind="options" />
+
     <div>
-      <div>为什么叫developer-plus？</div>
+      <h3 class="text-2xl">
+        为什么叫developer-plus？
+      </h3>
     </div>
-    <div>
-      <div>核心成员</div>
+    <!-- 核心成员 -->
+    <div mt-5>
+      <h3 class="text-xl">
+        核心成员
+      </h3>
       <div flex flex-wrap justify-start>
         <div
           v-for="(item, index) in coreMembers"
@@ -88,8 +111,11 @@ const goGithub = (github: string) => {
           flex
           mr-1%
           mt-10px
-          p-10px
-          bg-gray-300
+          pt-20px
+          pb-20px
+          pl-10px
+          pr-10px
+          bg-primary
           rd-5px
           cursor-pointer
           @click="goGithub(item.github)"
@@ -111,9 +137,25 @@ const goGithub = (github: string) => {
         </div>
       </div>
     </div>
-    <div>
-      <div>贡献者</div>
-      <img v-for="(item, index) in contributor" :key="index" src="" alt="">
+    <!-- 贡献者 -->
+    <div mt-5>
+      <h3 class="text-xl">
+        贡献者
+      </h3>
+      <div class="flex justify-between flex-wrap mt-16px">
+        <img
+          v-for="(item, index) in contributor"
+          :key="item.name + index"
+          mt-8px
+          rd-50%
+          w-58px
+          h-58px
+          cursor-pointer
+          border-rounded-28px
+          bg-black
+          :src="item.avatar"
+        >
+      </div>
     </div>
   </div>
 </template>
