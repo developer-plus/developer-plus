@@ -27,6 +27,13 @@ const teamMembers: ITeamMember[] = [
     link: 'https://hongbusi.github.io',
     githubLink: 'https://github.com/alexzhang1030',
     twitterLink: 'https://twitter.com/Hongbusi'
+  },
+  {
+    name: 'Lo',
+    avatar: 'https://avatars.githubusercontent.com/u/50254496?v=4',
+    tag: 'Core',
+    address: 'Wuxi, China',
+    githubLink: 'https://github.com/LoTwT'
   }
 ]
 
