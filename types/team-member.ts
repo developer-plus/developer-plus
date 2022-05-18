@@ -1,6 +1,6 @@
 export interface ITeamMember {
   name: string
-  avatar: string
+  avatar?: string
   tag: string
   address: string
   link?: string
