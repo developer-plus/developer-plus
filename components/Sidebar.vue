@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const coreMembers = await $fetch('/api/core-members')
+const friendLink = await $fetch('/api/friend-link')
 </script>
 
 <template>
@@ -38,18 +39,15 @@ const coreMembers = await $fetch('/api/core-members')
       </h3>
 
       <div class="flex justify-between flex-wrap mt-16px">
-        <button class="btn-primary mt-8px">
+        <a class="btn-primary mt-8px" href="https://github.com/developer-plus/weekly/issues" target="_blank">
           周刊投稿
-        </button>
-        <button class="btn-primary mt-8px">
-          新建书签
-        </button>
-        <button class="btn-primary mt-8px">
+        </a>
+        <a class="btn-primary mt-8px" href="https://github.com/developer-plus/plans/issues/new?assignees=&labels=pr+welcome&template=create.yml&title=%E3%80%90TODO%E3%80%91" target="_blank">
           新增计划
-        </button>
-        <button class="btn-primary mt-8px">
+        </a>
+        <a class="btn-primary mt-8px" href="https://github.com/developer-plus/developer-plus/issues/23" target="_blank">
           加入我们
-        </button>
+        </a>
       </div>
     </div>
 
@@ -59,10 +57,10 @@ const coreMembers = await $fetch('/api/core-members')
       </h3>
 
       <div class="mt-16px">
-        <a v-for="item in 8" :key="item" href="https://github.com/cuixiaorui/mini-vue" target="_blank">
+        <a v-for="(item, index) in friendLink" :key="index" :href="item.link" target="_blank">
           <div class="px-8px py-8px mt-8px bg-primary">
-            <h2>mini-vue</h2>
-            <p class="opacity-70">developer-plus 梦开始的地方。</p>
+            <h2>{{ item.title }}</h2>
+            <p class="opacity-70">{{ item.description }}</p>
           </div>
         </a>
       </div>

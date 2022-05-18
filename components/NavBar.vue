@@ -54,22 +54,27 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="navRef" class="sticky top-0 flex flex-col justify-center items-center gap-8 pr-2 w-80px h-screen border-r border-gray-200 text-xl">
-    <nuxt-link class="icon-primary" to="/" data-key="index">
-      <div class="i-ri-home-smile-line" />
-    </nuxt-link>
-    <nuxt-link class="icon-primary" to="/plans" data-key="plans">
-      <div class="i-ri-todo-line" />
-    </nuxt-link>
-    <nuxt-link class="icon-primary" to="/weekly" data-key="weekly">
-      <div class="i-ic-baseline-menu-book" />
-    </nuxt-link>
-    <nuxt-link class="icon-primary" to="/bookmarks" data-key="bookmarks">
+  <div class="relative">
+    <div class="absolute top-48px left-50% translate-x--50% w-32px h-32px">
+      <img src="/logo.png" alt="logo">
+    </div>
+    <div ref="navRef" class="sticky top-0 flex flex-col justify-center items-center gap-8 pb-10% pr-2 w-80px h-screen border-r border-gray-200 text-xl">
+      <nuxt-link class="icon-primary" to="/" data-key="index" title="Home">
+        <div class="i-ri-home-smile-line" />
+      </nuxt-link>
+      <nuxt-link class="icon-primary" to="/plans" data-key="plans" title="Plans">
+        <div class="i-ri-todo-line" />
+      </nuxt-link>
+      <nuxt-link class="icon-primary" to="/weekly" data-key="weekly" title="Weekly">
+        <div class="i-ic-baseline-menu-book" />
+      </nuxt-link>
+      <!-- <nuxt-link class="icon-primary" to="/bookmarks" data-key="bookmarks" title="Bookmarks">
       <div class="i-ic-round-bookmarks" />
-    </nuxt-link>
-    <nuxt-link class="icon-primary" to="/about" data-key="about">
-      <div class="i-ri-team-line" />
-    </nuxt-link>
-    <div ref="boxRef" class="absolute top-2 right-0 translate-x-50% w-2 h-2 bg-light-900 rounded-full" />
+    </nuxt-link> -->
+      <nuxt-link class="icon-primary" to="/about" data-key="about" title="About">
+        <div class="i-ri-team-line" />
+      </nuxt-link>
+      <div ref="boxRef" class="absolute top-2 right-0 translate-x-50% w-2 h-2 bg-light-900 rounded-full" />
+    </div>
   </div>
 </template>
