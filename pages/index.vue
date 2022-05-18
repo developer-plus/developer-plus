@@ -6,6 +6,11 @@ const TypeWriteProps = {
   strings: TypeWriterData,
   characterWidth: 1.6
 }
+
+const Projects = await $fetch('/api/home/projects')
+function goToProject(link: string) {
+  window.open(link)
+}
 </script>
 
 <template>
@@ -13,13 +18,13 @@ const TypeWriteProps = {
     <div class="element" />
     <div class="mt-5">
       <div flex="~" justify="start" items="baseline">
-        <div text="60px">
-          Developer Plus
+        <div text="48px" w-full flex="~" justify="center" items="center">
+          developer plus
         </div>
       </div>
       <div mt="20px">
         <div text="32px" flex="~" justify="start">
-          Hi，你好 <div class="emoji-handshake" ml="10px">
+          Hi，你好 <div ml="10px">
             👋
           </div>
         </div>
@@ -29,25 +34,23 @@ const TypeWriteProps = {
         <type-writer inline-flex v-bind="TypeWriteProps" />
       </div>
     </div>
+    <div mt-10>
+      <div text="28px">
+        Pinned
+      </div>
+      <div flex="~ wrap" w-full justify="between">
+        <div
+          v-for="p in Projects" :key="p.link" bg-primary w="32%" mt-4 px-3 py-3 h-100px cursor-pointer
+          @click="goToProject(p.link)"
+        >
+          <div text="18px">
+            {{ p.name }}
+          </div>
+          <div text="12px" mt-4 line-clamp-2>
+            <a :title="p.description" @click.prevent>{{ p.description }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
-
-<style>
-.emoji-handshake {
-  animation: handshake 3s ease-in-out infinite;
-}
-
-@keyframes handshake {
-  33% {
-    transform: rotate(40deg);
-  }
-
-  66% {
-    transform: rotate(-20deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-}
-</style>
