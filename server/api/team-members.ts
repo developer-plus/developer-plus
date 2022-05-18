@@ -27,6 +27,15 @@ const teamMembers: ITeamMember[] = [
     link: 'https://hongbusi.github.io',
     githubLink: 'https://github.com/alexzhang1030',
     twitterLink: 'https://twitter.com/Hongbusi'
+  },
+  {
+    name: 'chris-zhu',
+    avatar: 'https://www.github.com/chris-zhu.png',
+    tag: 'Core',
+    address: 'Chengdu, China',
+    link: 'http://zyob.top',
+    githubLink: 'https://github.com/chris-zhu',
+    twitterLink: ''
   }
 ]
 
