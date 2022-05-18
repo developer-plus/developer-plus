@@ -1,12 +1,15 @@
-import { ISSUES_URL } from '../constants'
+import { ISSUES_URL, defaultPageSize } from '../constants'
 
-interface FetchTodoListForm {
+export interface FetchTodoListForm {
+  assignee?: string
   state?: string
   labels?: string
+  perPage?: number
+  page?: number
 }
 
 export const fetchTodoList = async (form: FetchTodoListForm = {}) => {
-  const { state = 'all', labels = 'ToDo' } = form
-  const url = `${ISSUES_URL}?state=${state}&labels=${labels}`
+  const { assignee = 'none', state = 'all', labels = 'ToDo', perPage = defaultPageSize, page = 1 } = form
+  const url = `${ISSUES_URL}?assignee=${assignee}&state=${state}&labels=${labels}&per_page=${perPage}&page=${page}`
   return fetch(url)
 }
