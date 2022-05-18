@@ -1,162 +1,45 @@
-<script lang="ts" setup>
-// 上边这部分公共数据可以等大家data目录创建好抽离走
-interface IMember {
-  avatar: string
-  name: string
-  position: string
-  sign: string
-  github: string
-}
-
-interface IContributor {
-  avatar: string
-  name: string
-  github: string
-}
-
+<script setup lang="ts">
 const options = {
   title: '关于我们',
-  subtitle: 'About us',
-  description: '来源于开发者，服务于开发者。',
-  btnLink: 'https://github.com/Hongbusi/developer-plus',
-  btnText: '按钮',
-  githubLink: 'https://github.com/Hongbusi/developer-plus'
+  subtitle: 'About us'
 }
 
-const coreMembers = reactive<IMember[]>([
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/53554371?v=4',
-    name: 'Hongbusi',
-    position: '发起人',
-    sign: '心若不动，风又奈何',
-    github: 'https://github.com/Hongbusi'
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/49969959?v=4',
-    name: 'alexzhang1030',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/66043405?v=4',
-    name: 'TickHeart',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/20129035?v=4',
-    name: 'RainyNight9',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/22882957?v=4',
-    name: 'zgsgs',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/53544980?v=4',
-    name: 'CoderCrush',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {},
-  {},
-  {},
-  {}
-])
-
-const contributor = reactive<IContributor[]>([
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {}
-])
-
-const goGithub = (github: string) => {
-  github && window.open(github)
-}
+const members = await $fetch('/api/team-members')
 </script>
 
 <template>
-  <div class="about mt-5">
-    <page-wrapper v-bind="options" />
+  <page-wrapper v-bind="options">
+    <page-module title="为什么叫 developer-plus？">
+      <div class="opacity-70 indent-2em">
+        在决定去创建组织之后，和几个群友讨论了一下关于组织名称的问题，得到了很多答案：hbs-admin、hbs-design、hbs-team...，但是好像和我的想法并不吻合。
 
-    <div>
-      <h3 class="text-2xl">
-        为什么叫developer-plus？
-      </h3>
-    </div>
-    <!-- 核心成员 -->
-    <div mt-5>
-      <h3 class="text-xl">
-        核心成员
-      </h3>
-      <div flex flex-wrap justify-start>
-        <div
-          v-for="(item, index) in coreMembers"
-          :key="item.name + index"
-          h-100px
-          w-32%
-          flex
-          mr-1%
-          mt-10px
-          pt-20px
-          pb-20px
-          pl-10px
-          pr-10px
-          bg-primary
-          rd-5px
-          cursor-pointer
-          @click="goGithub(item.github)"
-        >
-          <img rd-50% bg-gray-600 w-58px h-58px mr-5px :src="item.avatar">
-          <div flex-1>
-            <div flex justify-between>
-              <div text-14px w-60% truncate>
-                {{ item.name }}
-              </div>
-              <div text-12px>
-                {{ item.position }}
-              </div>
-            </div>
-            <div text-14px mt-10px>
-              {{ item.sign }}
-            </div>
+        想要创建这个组织，或者说想要去做 vue-hbs-admin 这个开源项目最根本的原因，是因为想要找一群小伙伴共同学习，共同进步，可以互相 review 代码，享受开源的快乐。我想要的是一个团队，而不是带着 hbs 这种个人色彩的名称。
+
+        纠结了很久，也想到了很多满意的名字，如：developers...（糟糕，其他的想不起了...）。但是这些名字都被抢注了，很失望。
+
+        不知道怎么滴，突然爆出了 plus 这个单词，可能是受 element-plus 的影响，也有可能是因为我已经想好了 logo 的设计。于是乎，名字敲定，第一个组织成功创建，开心地把 vue-hbs-admin 迁移到组织。
+      </div>
+    </page-module>
+
+    <page-module title="团队成员">
+      <div class="flex flex-wrap justify-between">
+        <div v-for="(member, index) in members" :key="index" class="flex justify-between px-30px py-12px mt-16px w-340px bg-primary">
+          <div class="overflow-hidden mr-24px w-64px h-64px border-rounded-1/2">
+            <img :src="member.avatar">
+          </div>
+          <div class="flex-1">
+            <p>{{ member.name }}<span class="opacity-70 text-sm">（{{ member.tag }}）</span></p>
+            <p class="flex items-center mt-4px opacity-70 text-sm">
+              <i class="mr-8px icon-primary i-carbon-location" />
+              {{ member.address }}
+            </p>
+            <p class="flex items-center mt-8px">
+              <a class="icon-primary i-carbon-logo-github mr-8px" :href="member.githubLink" target="_blank" />
+              <a class="icon-primary text-xl i-carbon-logo-twitter" :href="member.twitterLink" target="_blank" />
+            </p>
           </div>
         </div>
       </div>
-    </div>
-    <!-- 贡献者 -->
-    <div mt-5>
-      <h3 class="text-xl">
-        贡献者
-      </h3>
-      <div class="flex justify-between flex-wrap mt-16px">
-        <img
-          v-for="(item, index) in contributor"
-          :key="item.name + index"
-          mt-8px
-          rd-50%
-          w-58px
-          h-58px
-          cursor-pointer
-          border-rounded-28px
-          bg-black
-          :src="item.avatar"
-        >
-      </div>
-    </div>
-  </div>
+    </page-module>
+  </page-wrapper>
 </template>
