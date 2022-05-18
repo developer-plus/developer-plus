@@ -33,8 +33,7 @@ const teamMembers: ITeamMember[] = [
     tag: 'Core',
     address: 'Chengdu, China',
     link: 'http://zyob.top',
-    githubLink: 'https://github.com/chris-zhu',
-    twitterLink: ''
+    githubLink: 'https://github.com/chris-zhu'
   }
 ]
 
