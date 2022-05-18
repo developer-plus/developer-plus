@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import animejs from 'animejs'
-import { Announcement } from '~/data/Home/index.json'
+
+interface Banner {
+  title: string
+  link: string
+}
+
+const Announcement = await $fetch<Banner>('/api/banner')
 
 const str = Announcement.title
 

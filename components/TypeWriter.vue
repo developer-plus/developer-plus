@@ -1,23 +1,29 @@
 <script setup lang="ts">
 import { promiseTimeout } from '@vueuse/core'
 
-const strs = [
-  '极客',
-  '冒险家',
-  'superstar'
-]
+const props = defineProps<Props>()
+
+export interface Props {
+  // 展示的文字
+  strings: string[]
+  // 停留的毫秒数
+  delay: number
+  // 每个字展示的时间
+  time: number
+}
+
 let currentIndex = $ref(0)
 // 为什么要给一个 landed，因为 Vue 存在 diff，这里为了不让 type-writer 被 diff，所以要全量更新
 // 而因为 diff 的问题，所以第二次其实是顺序反过来的，这里做一下标识
 let isLanded = false
-const str = $computed(() => strs[currentIndex])
+const str = $computed(() => props.strings[currentIndex])
 const charRef = $ref<HTMLElement[]>()
 const typeWriterRef = $ref<HTMLElement>()
 
 function setDelay(charRef: HTMLElement[], cb?: (e: HTMLElement) => void) {
   charRef.forEach((charEl, i) => {
     cb && cb(charEl)
-    charEl.style.setProperty('--delay', `${(i + 1) * 0.3}s`)
+    charEl.style.setProperty('--delay', `${(i + 1) * props.time}s`)
   })
 }
 
@@ -30,7 +36,7 @@ function handleAnimationEnd(target: HTMLElement, cb: (e: AnimationEvent, cb: () 
 }
 
 async function handleNext() {
-  if (currentIndex === strs.length - 1)
+  if (currentIndex === props.strings.length - 1)
     currentIndex = 0
   else currentIndex += 1
   if (!isLanded)
@@ -40,6 +46,7 @@ async function handleNext() {
 
 async function init(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
   await nextTick()
+  typeWriterRef.classList.remove('ended')
   setDelay(!isLanded ? charRef : charRef.reverse(), (e) => {
     e.classList.remove('end')
     e.classList.add('init')
@@ -54,10 +61,10 @@ async function init(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
 }
 
 async function reverse(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
-  await promiseTimeout(1500)
+  await promiseTimeout(props.delay)
   typeWriterRef.classList.remove('ended')
   setDelay(charRef.reverse(), (e) => {
-    e.style.width = '2ch'
+    e.style.width = '1.6ch'
     e.classList.remove('init')
     e.classList.add('end')
   })
@@ -73,11 +80,14 @@ async function reverse(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
 onMounted(() => {
   init(typeWriterRef, charRef)
 })
+
+const color = useColorMode()
+const $color = $computed(() => color.value === 'dark' ? '#fff' : '#000')
 </script>
 
 <template>
   <div ref="typeWriterRef" class="type-writer" font-mono relative>
-    <span v-for="(s, i) in str" :key="i + s" ref="charRef" inline-block overflow-hidden w-0ch>
+    <span v-for="(s, i) in str" :key="i + s + str" ref="charRef" inline-block overflow-hidden w-0ch>
       {{ s }}
     </span>
   </div>
@@ -89,7 +99,6 @@ onMounted(() => {
 }
 
 .type-writer span.init {
-  --delay: 10s;
   animation: text-in 0.1s ease-in-out forwards;
   animation-delay: var(--delay);
 }
@@ -106,7 +115,7 @@ onMounted(() => {
   width: 0.3rem;
   height: 54px;
   line-height: 2rem;
-  background-color: #000;
+  background-color: v-bind("$color");
   border-radius: 2px;
   right: -10px;
 }
@@ -131,13 +140,13 @@ onMounted(() => {
   }
 
   to {
-    width: 2ch;
+    width: 1.6ch;
   }
 }
 
 @keyframes text-out {
   from {
-    width: 2ch;
+    width: 1.6ch;
   }
 
   to {

@@ -1,28 +1,32 @@
 <script setup lang="ts">
-import { TypeWriter as data } from '~/data/Home/index.json'
+import type { Props } from '~/components/TypeWriter.vue'
+
+const TypeWriterData = await $fetch('/api/home/type-write')
+const TypeWriteProps: Props = {
+  time: 0.1,
+  delay: 1500,
+  strings: TypeWriterData
+}
 </script>
 
 <template>
   <div class="element" />
   <div class="mt-5">
     <div flex="~" justify="start" items="baseline">
-      <div text="48px">
+      <div text="60px">
         Developer Plus
-      </div>
-      <div text="20px gray-500" ml="20px">
-        源于开发者，服务于开发者
       </div>
     </div>
     <div mt="20px">
-      <div text="36px" flex="~" justify="start">
+      <div text="32px" flex="~" justify="start">
         Hi，你好 <div class="emoji-handshake" ml="10px">
           👋
         </div>
       </div>
     </div>
-    <div mt="20px" text="36px">
-      我们是
-      <type-writer inline-flex :strings="data" />
+    <div mt="20px" text="32px">
+      <span font-mono w-2ch>我们</span>
+      <type-writer inline-flex v-bind="TypeWriteProps" />
     </div>
   </div>
 </template>
