@@ -9,23 +9,25 @@ const TypeWriteProps = {
 </script>
 
 <template>
-  <div class="element" />
-  <div class="mt-5">
-    <div flex="~" justify="start" items="baseline">
-      <div text="60px">
-        Developer Plus
-      </div>
-    </div>
-    <div mt="20px">
-      <div text="32px" flex="~" justify="start">
-        Hi，你好 <div class="emoji-handshake" ml="10px">
-          👋
+  <div>
+    <div class="element" />
+    <div class="mt-5">
+      <div flex="~" justify="start" items="baseline">
+        <div text="60px">
+          Developer Plus
         </div>
       </div>
-    </div>
-    <div mt="20px" text="32px">
-      <span font-mono w-2ch>我们</span>
-      <type-writer inline-flex v-bind="TypeWriteProps" />
+      <div mt="20px">
+        <div text="32px" flex="~" justify="start">
+          Hi，你好 <div class="emoji-handshake" ml="10px">
+            👋
+          </div>
+        </div>
+      </div>
+      <div mt="20px" text="32px">
+        <span font-mono w-2ch>我们</span>
+        <type-writer inline-flex v-bind="TypeWriteProps" />
+      </div>
     </div>
   </div>
 </template>
