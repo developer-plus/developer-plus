@@ -16,9 +16,11 @@ specifiers:
   husky: ^8.0.1
   lint-staged: ^12.4.1
   nuxt: 3.0.0-rc.3
+  vue-gtag-next: ^1.14.0
 
 dependencies:
   animejs: 3.2.1
+  vue-gtag-next: 1.14.0
 
 devDependencies:
   '@commitlint/cli': 17.0.0
@@ -7031,6 +7033,12 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-gtag-next/1.14.0:
+    resolution: {integrity: sha512-iJl+cOG2GU5NuxqzSSIpt03WVOvZqyKB9TOy7d55KiuvRklcnb2nlqxW5B/a3/sbIt7fla+XEkRyMCcoz0zAHw==}
+    peerDependencies:
+      vue: ^3.0.0-rc.11
+    dev: false
 
   /vue-router/4.0.15_vue@3.2.33:
     resolution: {integrity: sha512-xa+pIN9ZqORdIW1MkN2+d9Ui2pCM1b/UMgwYUCZOiFYHAvz/slKKBDha8DLrh5aCG/RibtrpyhKjKOZ85tYyWg==}

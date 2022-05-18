@@ -1,19 +1,4 @@
 <script lang="ts" setup>
-// 上边这部分公共数据可以等大家data目录创建好抽离走
-interface IMember {
-  avatar: string
-  name: string
-  position: string
-  sign: string
-  github: string
-}
-
-interface IContributor {
-  avatar: string
-  name: string
-  github: string
-}
-
 const options = {
   title: '关于我们',
   subtitle: 'About us',
@@ -23,66 +8,7 @@ const options = {
   githubLink: 'https://github.com/Hongbusi/developer-plus'
 }
 
-const coreMembers = reactive<IMember[]>([
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/53554371?v=4',
-    name: 'Hongbusi',
-    position: '发起人',
-    sign: '心若不动，风又奈何',
-    github: 'https://github.com/Hongbusi'
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/49969959?v=4',
-    name: 'alexzhang1030',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/66043405?v=4',
-    name: 'TickHeart',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/20129035?v=4',
-    name: 'RainyNight9',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/22882957?v=4',
-    name: 'zgsgs',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/53544980?v=4',
-    name: 'CoderCrush',
-    position: '核心成员',
-    sign: '心若不动，风又奈何',
-    github: ''
-  },
-  {},
-  {},
-  {},
-  {}
-])
-
-const contributor = reactive<IContributor[]>([
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {}
-])
+const { data } = await useFetch('/api/about')
 
 const goGithub = (github: string) => {
   github && window.open(github)
@@ -92,7 +18,6 @@ const goGithub = (github: string) => {
 <template>
   <div class="about mt-5">
     <page-wrapper v-bind="options" />
-
     <div>
       <h3 class="text-2xl">
         为什么叫developer-plus？
@@ -105,7 +30,7 @@ const goGithub = (github: string) => {
       </h3>
       <div flex flex-wrap justify-start>
         <div
-          v-for="(item, index) in coreMembers"
+          v-for="(item, index) in data.coreMembers"
           :key="item.name + index"
           h-100px
           w-32%
@@ -145,7 +70,7 @@ const goGithub = (github: string) => {
       </h3>
       <div class="flex justify-between flex-wrap mt-16px">
         <img
-          v-for="(item, index) in contributor"
+          v-for="(item, index) in data.contributor"
           :key="item.name + index"
           mt-8px
           rd-50%
