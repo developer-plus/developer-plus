@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useFireworks } from '~~/composables/useFireworks'
 const TypeWriterData = await $fetch('/api/home/type-write')
 const TypeWriteProps = {
   time: 0.1,
@@ -11,6 +12,10 @@ const Projects = await $fetch('/api/home/projects')
 function goToProject(link: string) {
   window.open(link)
 }
+
+onMounted(() => {
+  useFireworks()
+})
 </script>
 
 <template>
