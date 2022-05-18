@@ -3,7 +3,9 @@ import type { ITeamMember } from '~/types/team-member'
 
 const options = {
   title: '关于我们',
-  subtitle: 'About us'
+  subtitle: 'About us',
+  btnText: '加入我们',
+  btnLink: 'https://github.com/developer-plus/developer-plus/issues/23'
 }
 
 const members = await $fetch<ITeamMember[]>('/api/team-members')
@@ -28,10 +30,10 @@ const members = await $fetch<ITeamMember[]>('/api/team-members')
       <div class="flex flex-wrap justify-between">
         <div
           v-for="(member, index) in members" :key="index"
-          class="flex justify-between px-30px py-12px mt-16px w-340px bg-primary"
+          class="flex justify-between px-24px py-16px mt-16px w-340px bg-primary"
         >
           <div class="overflow-hidden mr-24px w-64px h-64px border-rounded-1/2">
-            <img :src="member.avatar">
+            <img :src="member.avatar ?? `${member.githubLink}.png`">
           </div>
           <div class="flex-1">
             <p>
