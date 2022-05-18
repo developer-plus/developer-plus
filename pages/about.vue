@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+// 上边这部分公共数据可以等大家data目录创建好抽离走
 interface IMember {
   avatar: string
   name: string
