@@ -21,6 +21,7 @@
     "@iconify-json/ri": "^1.1.1",
     "@nuxtjs/color-mode": "^3.0.3",
     "@types/animejs": "^3.1.4",
+    "@types/canvas-confetti": "^1.4.2",
     "@unocss/nuxt": "^0.33.5",
     "@vueuse/nuxt": "^8.5.0",
     "eslint": "^8.15.0",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "animejs": "^3.2.1",
+    "canvas-confetti": "^1.5.1",
     "vue-gtag-next": "^1.14.0"
   },
   "eslintConfig": {
