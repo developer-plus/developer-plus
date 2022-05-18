@@ -25,7 +25,7 @@ const members = await $fetch('/api/team-members')
       <div class="flex flex-wrap justify-between">
         <div v-for="(member, index) in members" :key="index" class="flex justify-between px-30px py-12px mt-16px w-340px bg-primary">
           <div class="overflow-hidden mr-24px w-64px h-64px border-rounded-1/2">
-            <img :src="member.avatar">
+            <img :src="member.avatar ?? `https://www.github.com/${member.name}.png`">
           </div>
           <div class="flex-1">
             <p>

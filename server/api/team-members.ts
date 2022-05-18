@@ -30,7 +30,6 @@ const teamMembers: ITeamMember[] = [
   },
   {
     name: 'chris-zhu',
-    avatar: 'https://www.github.com/chris-zhu.png',
     tag: 'Core',
     address: 'Chengdu, China',
     link: 'http://zyob.top',
