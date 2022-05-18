@@ -1,9 +1,5 @@
 export interface IWeeklyData {
   /**
-   * 期数
-   */
-  id: number
-  /**
    * 标题
    */
   title: string
