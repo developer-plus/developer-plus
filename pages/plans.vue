@@ -26,7 +26,7 @@ const setTab = (index) => {
 
 const todoList = ref<TodoItem[]>([])
 async function getTodoList(data: FetchTodoListForm = {}) {
-  const { assignee = '*', page = 1, state = 'all' } = data
+  const { assignee = 'none', page = 1, state = 'all' } = data
   const form = {
     assignee,
     page,
