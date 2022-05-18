@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { promiseTimeout } from '@vueuse/core'
-
-const props = defineProps<Props>()
-
-export interface Props {
+interface Props {
   // 展示的文字
   strings: string[]
   // 停留的毫秒数
   delay: number
   // 每个字展示的时间
   time: number
+  // 每个字的宽度，单位是 ch
+  characterWidth: number
 }
-
+const props = defineProps<Props>()
+const characterWidthWithUnit = $computed(() => `${props.characterWidth}ch`)
 let currentIndex = $ref(0)
 // 为什么要给一个 landed，因为 Vue 存在 diff，这里为了不让 type-writer 被 diff，所以要全量更新
 // 而因为 diff 的问题，所以第二次其实是顺序反过来的，这里做一下标识
@@ -64,7 +64,7 @@ async function reverse(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
   await promiseTimeout(props.delay)
   typeWriterRef.classList.remove('ended')
   setDelay(charRef.reverse(), (e) => {
-    e.style.width = '1.6ch'
+    e.style.width = characterWidthWithUnit
     e.classList.remove('init')
     e.classList.add('end')
   })
@@ -140,13 +140,13 @@ const $color = $computed(() => color.value === 'dark' ? '#fff' : '#000')
   }
 
   to {
-    width: 1.6ch;
+    width: v-bind("characterWidthWithUnit");
   }
 }
 
 @keyframes text-out {
   from {
-    width: 1.6ch;
+    width: v-bind("characterWidthWithUnit");
   }
 
   to {

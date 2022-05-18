@@ -10,6 +10,9 @@
     "lint:check": "eslint .",
     "prepare": "husky install"
   },
+  "dependencies": {
+    "animejs": "^3.2.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",

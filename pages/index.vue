@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { Props } from '~/components/TypeWriter.vue'
-
 const TypeWriterData = await $fetch('/api/home/type-write')
-const TypeWriteProps: Props = {
+const TypeWriteProps = {
   time: 0.1,
   delay: 1500,
-  strings: TypeWriterData
+  strings: TypeWriterData,
+  characterWidth: 1.6
 }
 </script>
 
