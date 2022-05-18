@@ -15,7 +15,7 @@ export default defineEventHandler<Project[]>(() => [
   {
     name: 'resume',
     link: withPrefix('resume'),
-    description: '一个开源免费的简历生成器'
+    description: '一个开源免费的简历生成器。'
   },
   {
     name: 'vue-hbs-admin',
@@ -25,6 +25,6 @@ export default defineEventHandler<Project[]>(() => [
   {
     name: 'starter-nuxt3',
     link: withPrefix('starter-nuxt3'),
-    description: '一个 Nuxt3 + unocss + TypeScript 的起手模板，由 developer-plus 创建'
+    description: '一个 Nuxt3 + unocss + TypeScript 的起手模板，由 developer-plus 创建。'
   }
 ])
