@@ -12,12 +12,10 @@ const teamMembers: ITeamMember[] = [
   },
   {
     name: 'TickHeart',
-    avatar: 'https://avatars.githubusercontent.com/u/49969959?v=4',
+    avatar: 'https://avatars.githubusercontent.com/u/66043405?v=4',
     tag: 'Member',
-    address: 'Hangzhou, China',
-    link: 'https://hongbusi.github.io',
-    githubLink: 'https://github.com/TickHeart',
-    twitterLink: 'https://twitter.com/Hongbusi'
+    address: 'Hebei, China',
+    githubLink: 'https://github.com/TickHeart'
   },
   {
     name: 'alexzhang1030',
@@ -25,7 +23,7 @@ const teamMembers: ITeamMember[] = [
     tag: 'Member',
     address: 'Beijing, China',
     githubLink: 'https://github.com/alexzhang1030',
-    twitterLink: 'https://twitter.com/Hongbusi'
+    twitterLink: 'https://twitter.com/AlanBro23'
   },
   {
     name: 'RainyNight9',
