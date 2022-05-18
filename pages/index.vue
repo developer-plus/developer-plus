@@ -1,5 +1,53 @@
+<script setup lang="ts">
+const TypeWriterData = await $fetch('/api/home/type-write')
+const TypeWriteProps = {
+  time: 0.1,
+  delay: 1500,
+  strings: TypeWriterData,
+  characterWidth: 1.6
+}
+</script>
+
 <template>
   <div>
-    这里是首页这里是首页这里是首页这里是首页这里是首页这里是首页这里是首页这里是首页这里是首页这里是首页
+    <div class="element" />
+    <div class="mt-5">
+      <div flex="~" justify="start" items="baseline">
+        <div text="60px">
+          Developer Plus
+        </div>
+      </div>
+      <div mt="20px">
+        <div text="32px" flex="~" justify="start">
+          Hi，你好 <div class="emoji-handshake" ml="10px">
+            👋
+          </div>
+        </div>
+      </div>
+      <div mt="20px" text="32px">
+        <span font-mono w-2ch>我们</span>
+        <type-writer inline-flex v-bind="TypeWriteProps" />
+      </div>
+    </div>
   </div>
 </template>
+
+<style>
+.emoji-handshake {
+  animation: handshake 3s ease-in-out infinite;
+}
+
+@keyframes handshake {
+  33% {
+    transform: rotate(40deg);
+  }
+
+  66% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+</style>
