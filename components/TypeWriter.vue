@@ -7,11 +7,14 @@ const strs = [
   'superstar'
 ]
 let currentIndex = $ref(0)
+// 为什么要给一个 landed，因为 Vue 存在 diff，这里为了不让 type-writer 被 diff，所以要全量更新
+// 而因为 diff 的问题，所以第二次其实是顺序反过来的，这里做一下标识
+let isLanded = false
 const str = $computed(() => strs[currentIndex])
 const charRef = $ref<HTMLElement[]>()
 const typeWriterRef = $ref<HTMLElement>()
 
-async function setDelay(charRef: HTMLElement[], cb?: (e: HTMLElement) => void) {
+function setDelay(charRef: HTMLElement[], cb?: (e: HTMLElement) => void) {
   charRef.forEach((charEl, i) => {
     cb && cb(charEl)
     charEl.style.setProperty('--delay', `${(i + 1) * 0.3}s`)
@@ -30,11 +33,14 @@ async function handleNext() {
   if (currentIndex === strs.length - 1)
     currentIndex = 0
   else currentIndex += 1
+  if (!isLanded)
+    isLanded = true
   init(typeWriterRef, charRef)
 }
 
-function init(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
-  setDelay(charRef, (e) => {
+async function init(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
+  await nextTick()
+  setDelay(!isLanded ? charRef : charRef.reverse(), (e) => {
     e.classList.remove('end')
     e.classList.add('init')
   })
@@ -56,7 +62,7 @@ async function reverse(typeWriterRef: HTMLElement, charRef: HTMLElement[]) {
     e.classList.add('end')
   })
   handleAnimationEnd(typeWriterRef, (e, cb) => {
-    if (e.target === charRef[0]) {
+    if (e.target === (charRef[charRef.length - 1])) {
       cb()
       typeWriterRef.classList.add('ended')
       handleNext()
@@ -71,7 +77,7 @@ onMounted(() => {
 
 <template>
   <div ref="typeWriterRef" class="type-writer" font-mono relative>
-    <span v-for="(s, i) in str" :key="i" ref="charRef" inline-block overflow-hidden w-0ch>
+    <span v-for="(s, i) in str" :key="i + s" ref="charRef" inline-block overflow-hidden w-0ch>
       {{ s }}
     </span>
   </div>
