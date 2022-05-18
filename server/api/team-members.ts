@@ -3,7 +3,7 @@ import type { ITeamMember } from '~~/types'
 const teamMembers: ITeamMember[] = [
   {
     name: 'Hongbusi',
-    avatar: 'https://www.github.com/Hongbusi.png',
+    avatar: 'https://avatars.githubusercontent.com/u/53554371?v=4',
     tag: 'Creator',
     address: 'Hangzhou, China',
     link: 'https://hongbusi.github.io',
@@ -12,7 +12,7 @@ const teamMembers: ITeamMember[] = [
   },
   {
     name: 'TickHeart',
-    avatar: 'https://www.github.com/TickHeart.png',
+    avatar: 'https://avatars.githubusercontent.com/u/49969959?v=4',
     tag: 'Core',
     address: 'Hangzhou, China',
     link: 'https://hongbusi.github.io',
@@ -21,7 +21,7 @@ const teamMembers: ITeamMember[] = [
   },
   {
     name: 'alexzhang1030',
-    avatar: 'https://www.github.com/alexzhang1030.png',
+    avatar: 'https://avatars.githubusercontent.com/u/49969959?v=4',
     tag: 'Core',
     address: 'Hangzhou, China',
     link: 'https://hongbusi.github.io',
