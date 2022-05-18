@@ -1,8 +1,10 @@
 export interface TodoItem {
   number: number
-  updated_at: string
+  time: string
   title: string
   locked: boolean
-  html_url: string
   state: 'open' | 'closed' | 'all'
+  url: string
+  avatar?: string
+  name?: string
 }
