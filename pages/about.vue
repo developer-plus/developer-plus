@@ -28,14 +28,21 @@ const members = await $fetch('/api/team-members')
             <img :src="member.avatar">
           </div>
           <div class="flex-1">
-            <p>{{ member.name }}<span class="opacity-70 text-sm">（{{ member.tag }}）</span></p>
+            <p>
+              {{ member.name }}
+              <span class="opacity-70 text-sm">（{{ member.tag }}）</span>
+            </p>
             <p class="flex items-center mt-4px opacity-70 text-sm">
               <i class="mr-8px icon-primary i-carbon-location" />
               {{ member.address }}
             </p>
+            <p v-if="member.link" class="flex items-center mt-4px opacity-70 text-sm">
+              <i class="mr-8px icon-primary i-carbon-link" />
+              <a :href="member.link" target="_blank">{{ member.link }}</a>
+            </p>
             <p class="flex items-center mt-8px">
               <a class="icon-primary i-carbon-logo-github mr-8px" :href="member.githubLink" target="_blank" />
-              <a class="icon-primary text-xl i-carbon-logo-twitter" :href="member.twitterLink" target="_blank" />
+              <a v-if="member.twitterLink" class="icon-primary text-xl i-carbon-logo-twitter" :href="member.twitterLink" target="_blank" />
             </p>
           </div>
         </div>
