@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const coreMembers = await $fetch('/api/core-members')
+</script>
+
 <template>
   <div class="px-32px py-24px w-380px min-h-screen border-l border-gray-200">
     <div class="flex justify-between">
@@ -20,7 +24,11 @@
       </h3>
 
       <div class="flex justify-between flex-wrap mt-16px">
-        <div v-for="item in 10" :key="item" class="mt-8px w-56px h-56px cursor-pointer border-rounded-28px bg-black" />
+        <a v-for="(member, index) in coreMembers" :key="index" :href="member.link" :title="member.name">
+          <div class="overflow-hidden mt-8px w-56px h-56px cursor-pointer border-rounded-28px bg-black">
+            <img class="w-full h-full" :src="member.avatar" :alt="member.name">
+          </div>
+        </a>
       </div>
     </div>
 
