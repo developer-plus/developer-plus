@@ -26,6 +26,13 @@ const teamMembers: ITeamMember[] = [
     twitterLink: 'https://twitter.com/AlanBro23'
   },
   {
+    name: 'zgsgs',
+    avatar: 'https://avatars.githubusercontent.com/u/22882957?v=4',
+    tag: 'Member',
+    address: 'Shanghai, China',
+    githubLink: 'https://github.com/zgsgs'
+  },
+  {
     name: 'RainyNight9',
     avatar: 'https://avatars.githubusercontent.com/u/20129035?v=4',
     tag: 'Member',
