@@ -3,7 +3,9 @@ import type { ITeamMember } from '~/types/team-member'
 
 const options = {
   title: '关于我们',
-  subtitle: 'About us'
+  subtitle: 'About us',
+  btnText: '加入我们',
+  btnLink: 'https://github.com/developer-plus/developer-plus/issues/23'
 }
 
 const members = await $fetch<ITeamMember[]>('/api/team-members')
