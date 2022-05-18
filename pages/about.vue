@@ -44,12 +44,19 @@ const members = await $fetch('/api/team-members')
           </div>
           <div class="flex-1">
             <p>
-              {{ member.name
-              }}<span class="opacity-70 text-sm">（{{ member.tag }}）</span>
+              {{ member.name }}
+              <span class="opacity-70 text-sm">（{{ member.tag }}）</span>
             </p>
             <p class="flex items-center mt-4px opacity-70 text-sm">
               <i class="mr-8px icon-primary i-carbon-location" />
               {{ member.address }}
+            </p>
+            <p
+              v-if="member.link"
+              class="flex items-center mt-4px opacity-70 text-sm"
+            >
+              <i class="mr-8px icon-primary i-carbon-link" />
+              <a :href="member.link" target="_blank">{{ member.link }}</a>
             </p>
             <p class="flex items-center mt-8px">
               <a
