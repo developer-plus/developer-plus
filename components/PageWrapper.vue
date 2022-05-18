@@ -2,7 +2,7 @@
 interface Props {
   title: string
   subtitle: string
-  description: string
+  description?: string
   btnLink?: string
   btnText?: string
   githubLink?: string
@@ -27,7 +27,7 @@ defineProps<Props>()
         <a v-if="githubLink" class="icon-primary i-carbon-logo-github" :href="githubLink" target="_blank" />
       </div>
     </div>
-    <p class="mt-6px opacity-70">
+    <p v-if="description" class="mt-6px opacity-70">
       {{ description }}
     </p>
     <div class="mt-24px">
