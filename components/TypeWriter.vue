@@ -82,7 +82,8 @@ onMounted(() => {
 })
 
 const color = useColorMode()
-const $color = $computed(() => color.value === 'dark' ? '#fff' : '#000')
+// const $color = $computed(() => color.value === 'dark' ? '#fff' : '#000')
+const $color = '#fff'
 </script>
 
 <template>
@@ -112,11 +113,10 @@ const $color = $computed(() => color.value === 'dark' ? '#fff' : '#000')
   content: '';
   display: inline-block;
   position: absolute;
-  width: 0.2rem;
+  width: 2px;
   height: 46px;
   line-height: 2rem;
   background-color: v-bind("$color");
-  border-radius: 2px;
   right: -10px;
 }
 
