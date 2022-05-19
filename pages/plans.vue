@@ -1,8 +1,41 @@
 <script lang="ts" setup>
-import type { FetchTodoListForm } from '~~/api'
-import { fetchTodoList } from '~~/api'
-import { defaultPageSize } from '~~/api/constants'
-import type { TodoItem } from '~~/types'
+import { PAGE_SIZE } from '~~/constants'
+import type { FetchTodoListParams } from '~~/types'
+
+const pageOptions = {
+  title: '开发计划',
+  subtitle: 'Plans',
+  description: '任务发布与领取',
+  btnLink: 'https://github.com/developer-plus/plans/issues/new/choose',
+  btnText: '新增计划',
+  githubLink: 'https://github.com/developer-plus/plans'
+}
+
+const params: FetchTodoListParams = reactive({
+  page: 1,
+  per_page: PAGE_SIZE,
+  assignee: 'none',
+  state: 'closed',
+  labels: 'ToDo'
+})
+
+const { data: todoList, pending, refresh } = await useFetch('/api/plans', { params })
+
+const isPrev = computed(() => {
+  return params.page <= 1
+})
+const isNext = computed(() => {
+  return todoList.value.length < PAGE_SIZE
+})
+
+async function perPage() {
+  params.page -= 1
+  refresh()
+}
+async function nextPage() {
+  params.page += 1
+  refresh()
+}
 
 const tabs = ['Pending', 'Processing', 'Done']
 const tabIndex = ref(0)
@@ -10,86 +43,28 @@ const setTab = (index) => {
   tabIndex.value = Number(index)
   switch (index) {
     case 0:
-      getTodoList({ assignee: 'none' })
+      params.assignee = 'none'
+      refresh()
       break
     case 1:
-      getTodoList({ assignee: '*' })
+      params.assignee = '*'
+      refresh()
       break
     case 2:
-      getTodoList({ state: 'closed' })
+      params.assignee = '*'
+      params.state = 'closed'
+      params.labels = 'Finish'
+      refresh()
       break
     default:
-      getTodoList()
+      refresh()
       break
   }
-}
-
-const todoList = ref<TodoItem[]>([])
-async function getTodoList(data: FetchTodoListForm = {}) {
-  const { assignee = 'none', page = 1, state = 'all' } = data
-  const form = {
-    assignee,
-    page,
-    state
-  }
-  const result = await fetchTodoList(form).then(r => r.json())
-  if (Array.isArray(result)) {
-    const _result = result.map((todo) => {
-      const {
-        number,
-        updated_at: time,
-        title,
-        locked,
-        html_url: url,
-        state,
-        assignee
-      } = todo
-
-      return {
-        number,
-        time,
-        title,
-        locked,
-        state,
-        url,
-        avatar: assignee && assignee.avatar_url,
-        name: assignee && assignee.login
-      }
-    })
-    todoList.value = _result
-  }
-}
-
-onMounted(async () => {
-  await getTodoList()
-})
-
-const page = ref(1)
-const isPrev = computed(() => {
-  return page.value <= 1
-})
-const isNext = computed(() => {
-  return todoList.value.length < defaultPageSize
-})
-async function perPage() {
-  page.value -= 1
-
-  await getTodoList({ page: page.value })
-}
-async function nextPage() {
-  page.value += 1
-
-  await getTodoList({ page: page.value })
 }
 </script>
 
 <template>
-  <div class="plans">
-    <header class="my-10">
-      <span class="title text-2xl mr-2">开发计划</span>
-      <span class="sub-title text-base text-gray-400">Plans</span>
-    </header>
-
+  <page-wrapper v-bind="pageOptions">
     <main>
       <article>
         <section>
@@ -129,5 +104,5 @@ async function nextPage() {
         </button>
       </div>
     </footer>
-  </div>
+  </page-wrapper>
 </template>
