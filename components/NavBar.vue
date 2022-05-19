@@ -74,7 +74,7 @@ onUnmounted(() => {
       <!-- <nuxt-link class="icon-primary" to="/bookmarks" data-key="bookmarks" title="Bookmarks">
       <div class="i-ic-round-bookmarks" />
     </nuxt-link> -->
-      <nuxt-link class="icon-primary" to="/about" data-key="about" title="About">
+      <nuxt-link class="icon-primary" to="/team-member" data-key="team-member" title="Team member">
         <div class="i-ri-team-line" />
       </nuxt-link>
       <div ref="boxRef" class="absolute top-2 right-0 translate-x-50% w-2 h-2 bg-light-900 rounded-full" />

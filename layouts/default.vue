@@ -1,5 +1,5 @@
 <template>
-  <main class="flex px-10 mx-auto w-1500px">
+  <main class="flex px-10 mx-auto min-w-1400px max-w-1500px">
     <nav-bar />
 
     <div class="flex-1 flex justify-center">

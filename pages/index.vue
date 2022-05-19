@@ -21,31 +21,25 @@ onMounted(() => {
 <template>
   <div>
     <div class="element" />
-    <div class="mt-5">
-      <div flex="~" justify="start" items="baseline">
-        <div text="48px" w-full flex="~" justify="center" items="center">
-          developer plus
-        </div>
+    <div class="mt-40px">
+      <div class="text-6xl text-center">
+        developer plus
       </div>
-      <div mt="20px">
-        <div text="32px" flex="~" justify="start">
-          Hi，你好 <div ml="10px">
-            👋
-          </div>
+      <div class="mt-32px px-36px py-26px bg-black text-white rounded">
+        <div class="text-3xl">
+          Hi，你好 <span class="ml-10px">👋</span>
         </div>
-      </div>
-      <div mt="20px" text="32px">
-        <span font-mono w-2ch>我们</span>
-        <type-writer inline-flex v-bind="TypeWriteProps" />
+        <div mt="20px" text="32px">
+          <span font-mono w-2ch>我们</span>
+          <type-writer inline-flex v-bind="TypeWriteProps" />
+        </div>
       </div>
     </div>
-    <div mt-10>
-      <div text="28px">
-        Pinned
-      </div>
+
+    <page-module title="进行中的项目">
       <div flex="~ wrap" w-full justify="between">
         <div
-          v-for="p in Projects" :key="p.link" bg-primary w="32%" mt-4 px-3 py-3 h-100px cursor-pointer
+          v-for="p in Projects" :key="p.link" bg-primary w="48%" mt-4 px-3 py-3 h-100px cursor-pointer
           @click="goToProject(p.link)"
         >
           <div text="18px">
@@ -56,6 +50,6 @@ onMounted(() => {
           </div>
         </div>
       </div>
-    </div>
+    </page-module>
   </div>
 </template>

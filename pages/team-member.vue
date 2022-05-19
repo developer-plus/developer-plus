@@ -2,8 +2,9 @@
 import type { ITeamMember } from '~/types/team-member'
 
 const options = {
-  title: '关于我们',
-  subtitle: 'About us',
+  title: '团队成员',
+  subtitle: 'Team member',
+  description: 'developer-plus 成员以及开源社区贡献者，其中一些选择在下面进行介绍。',
   btnText: '加入我们',
   btnLink: 'https://github.com/developer-plus/developer-plus/issues/23'
 }
@@ -13,16 +14,7 @@ const members = await $fetch<ITeamMember[]>('/api/team-members')
 
 <template>
   <page-wrapper v-bind="options">
-    <page-module title="为什么叫 developer-plus？">
-      <div class="opacity-70">
-        开发者之上：来源于开发者，服务于开发者。
-        <a class="ml-12px btn-primary-small" href="https://github.com/developer-plus/guide/wiki/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AB-developer-plus%EF%BC%9F" target="_blank">
-          详细介绍
-        </a>
-      </div>
-    </page-module>
-
-    <page-module title="团队成员">
+    <page-module title="核心成员">
       <div class="flex flex-wrap justify-between">
         <div
           v-for="(member, index) in members" :key="index"
@@ -52,6 +44,14 @@ const members = await $fetch<ITeamMember[]>('/api/team-members')
               />
             </p>
           </div>
+        </div>
+      </div>
+    </page-module>
+
+    <page-module title="贡献者">
+      <div class="flex flex-wrap justify-between">
+        <div v-for="i in 50" :key="i" class="flex justify-center items-center mt-6px w-64px h-64px bg-primary border-rounded-1/2 text-sm">
+          虚以待位
         </div>
       </div>
     </page-module>
