@@ -21,16 +21,18 @@ onMounted(() => {
 <template>
   <div>
     <div class="element" />
-    <div class="mt-5">
+    <div class="mt-40px">
       <div class="text-6xl text-center">
         developer plus
       </div>
-      <div class="mt-32px text-3xl">
-        Hi，你好 <span class="ml-10px">👋</span>
-      </div>
-      <div mt="20px" text="32px">
-        <span font-mono w-2ch>我们</span>
-        <type-writer inline-flex v-bind="TypeWriteProps" />
+      <div class="mt-32px px-36px py-26px bg-black text-white rounded">
+        <div class="text-3xl">
+          Hi，你好 <span class="ml-10px">👋</span>
+        </div>
+        <div mt="20px" text="32px">
+          <span font-mono w-2ch>我们</span>
+          <type-writer inline-flex v-bind="TypeWriteProps" />
+        </div>
       </div>
     </div>
 
