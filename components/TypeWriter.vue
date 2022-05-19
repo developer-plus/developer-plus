@@ -112,8 +112,8 @@ const $color = $computed(() => color.value === 'dark' ? '#fff' : '#000')
   content: '';
   display: inline-block;
   position: absolute;
-  width: 0.3rem;
-  height: 54px;
+  width: 0.2rem;
+  height: 46px;
   line-height: 2rem;
   background-color: v-bind("$color");
   border-radius: 2px;

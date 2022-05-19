@@ -22,17 +22,11 @@ onMounted(() => {
   <div>
     <div class="element" />
     <div class="mt-5">
-      <div flex="~" justify="start" items="baseline">
-        <div text="48px" w-full flex="~" justify="center" items="center">
-          developer plus
-        </div>
+      <div class="text-6xl text-center">
+        developer plus
       </div>
-      <div mt="20px">
-        <div text="32px" flex="~" justify="start">
-          Hi，你好 <div ml="10px">
-            👋
-          </div>
-        </div>
+      <div class="mt-32px text-3xl">
+        Hi，你好 <span class="ml-10px">👋</span>
       </div>
       <div mt="20px" text="32px">
         <span font-mono w-2ch>我们</span>
