@@ -33,13 +33,11 @@ onMounted(() => {
         <type-writer inline-flex v-bind="TypeWriteProps" />
       </div>
     </div>
-    <div mt-10>
-      <div text="28px">
-        Pinned
-      </div>
+
+    <page-module title="进行中的项目">
       <div flex="~ wrap" w-full justify="between">
         <div
-          v-for="p in Projects" :key="p.link" bg-primary w="32%" mt-4 px-3 py-3 h-100px cursor-pointer
+          v-for="p in Projects" :key="p.link" bg-primary w="48%" mt-4 px-3 py-3 h-100px cursor-pointer
           @click="goToProject(p.link)"
         >
           <div text="18px">
@@ -50,6 +48,6 @@ onMounted(() => {
           </div>
         </div>
       </div>
-    </div>
+    </page-module>
   </div>
 </template>
