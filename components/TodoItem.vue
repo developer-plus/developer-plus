@@ -41,14 +41,11 @@ function goToIssuePage() {
     <div v-if="!props.avatar" class="dark:i-fluent-checkbox-unchecked-24-regular i-fluent-checkbox-unchecked-24-regular text-xl" />
     <img v-if="props.avatar" :src="props.avatar" :alt="props.name" class="w-8 h-8 rounded-full">
     <div class="flex flex-col gap-1 w-full text-left">
-      <div>
+      <div class="line-clamp-1">
         {{ props.title }}
       </div>
       <div class="flex justify-between items-center gap-2">
         <span class="text-xs text-gray-400">{{ calcTimeString }}</span>
-        <!-- <div class="px-2 rounded-1 text-sm bg-blue-300 text-white">
-          {{ props.state }}
-        </div> -->
         <div class="text-xs text-gray-400">
           <span v-if="!props.name" class="text-green-500/60">暂未领取</span>
           <span v-if="props.name">
