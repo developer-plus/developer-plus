@@ -46,9 +46,6 @@ function goToIssuePage() {
       </div>
       <div class="flex justify-between items-center gap-2">
         <span class="text-xs text-gray-400">{{ calcTimeString }}</span>
-        <!-- <div class="px-2 rounded-1 text-sm bg-blue-300 text-white">
-          {{ props.state }}
-        </div> -->
         <div class="text-xs text-gray-400">
           <span v-if="!props.name" class="text-green-500/60">暂未领取</span>
           <span v-if="props.name">
