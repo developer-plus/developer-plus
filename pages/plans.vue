@@ -110,6 +110,7 @@ async function nextPage() {
           </div>
         </section>
         <section>
+          <default-plan v-show="!todoList.length" />
           <ul class="todo-list my-4">
             <li v-for="todo in todoList" :key="todo.number" class="my-4">
               <todo-item v-bind="todo" />
