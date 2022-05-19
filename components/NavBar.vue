@@ -55,13 +55,13 @@ onUnmounted(() => {
 
 <template>
   <div class="relative">
-    <div class="absolute top-25px left-50% translate-x--50% w-32px h-32px">
-      <img src="/logo.png" alt="logo">
-    </div>
     <div
       ref="navRef"
       class="sticky top-0 flex flex-col justify-center items-center gap-8 pb-10% pr-2 w-80px h-screen border-r border-gray-200 text-xl"
     >
+      <div class="absolute top-25px left-50% translate-x--50% w-32px h-32px">
+        <img src="/logo.png" alt="logo">
+      </div>
       <nuxt-link class="icon-primary" to="/" data-key="index" title="Home">
         <div class="i-ri-home-smile-line" />
       </nuxt-link>
