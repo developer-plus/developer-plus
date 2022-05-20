@@ -55,10 +55,24 @@ const friendLink = await $fetch('/api/friend-link')
         <a class="btn-primary mt-8px" href="https://github.com/developer-plus/plans/issues/new?assignees=&labels=pr+welcome&template=create.yml&title=%E3%80%90TODO%E3%80%91" target="_blank">
           新增计划
         </a>
-        <a class="btn-primary mt-8px" href="https://github.com/developer-plus" target="_blank">
-          虚以待位
+        <a class="btn-primary mt-8px" href="https://github.com/developer-plus/developer-plus/issues" target="_blank">
+          勘误/建议
         </a>
       </div>
+    </div>
+
+    <div class="mt-36px">
+      <h3 class="text-xl">
+        每日一题
+      </h3>
+
+      <div class="mt-16px opacity-70">
+        Vue 实例挂载的过程中发生了什么?
+      </div>
+
+      <a class="btn-primary-small mt-16px" href="https://github.com/developer-plus/interview/issues/1" target="_blank">
+        前往答题
+      </a>
     </div>
 
     <div class="mt-36px">

@@ -3,7 +3,7 @@
     <nav-bar />
 
     <div class="flex-1 flex justify-center">
-      <div class="mx-32px w-700px">
+      <div class="mx-32px pb-48px w-700px">
         <banner />
         <slot />
       </div>

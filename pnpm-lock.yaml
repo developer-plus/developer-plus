@@ -8,6 +8,7 @@ specifiers:
   '@iconify-json/eva': ^1.1.1
   '@iconify-json/fluent': ^1.1.7
   '@iconify-json/ic': ^1.1.4
+  '@iconify-json/octicon': ^1.1.9
   '@iconify-json/ri': ^1.1.1
   '@nuxtjs/color-mode': ^3.0.3
   '@types/animejs': ^3.1.4
@@ -35,6 +36,7 @@ devDependencies:
   '@iconify-json/eva': 1.1.1
   '@iconify-json/fluent': 1.1.7
   '@iconify-json/ic': 1.1.4
+  '@iconify-json/octicon': 1.1.9
   '@iconify-json/ri': 1.1.1
   '@nuxtjs/color-mode': 3.0.3
   '@types/animejs': 3.1.4
@@ -690,6 +692,12 @@ packages:
 
   /@iconify-json/ic/1.1.4:
     resolution: {integrity: sha512-NkcyCh3VHwm3L19Ys4PDnbJmMoSE6vd83xjfWofmoeKKebs4tktz/LhPIy9vcaDqRENTNVtDORQdv0e+HCOjSg==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/octicon/1.1.9:
+    resolution: {integrity: sha512-qgQRLNOnsC/i92Lp/1XHXa3UP0TtDEdvQ6Myt9V0xue9ewvCvy52vEftJMgRi3+MvKa4Itl8V2uaZ0dALWCi1w==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true
