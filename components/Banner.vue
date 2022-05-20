@@ -11,11 +11,8 @@ function open() {
 </script>
 
 <template>
-  <div
-    class="box" w-full flex="~" justify="center" items="center" text-bold h-40px text-19px rounded-10px
-    bg="gray-200/70" dark:bg="gray-200/20" dark:text-white cursor-pointer transition="all" text-black select-none
-    mt-20px @click="open"
-  >
+  <div class="flex justify-center items-center mt-20px py-8px text-xl bg-primary cursor-pointer transition-all select-none" @click="open">
+    <div class="mr-8px text-lg i-carbon-notification" />
     {{ Announcement.title }}
   </div>
 </template>
