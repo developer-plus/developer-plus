@@ -8,7 +8,7 @@ const TypeWriteProps = {
   characterWidth: 1.6
 }
 
-const Projects = await $fetch('/api/home/projects')
+const projects = await $fetch('/api/home/projects')
 function goToProject(link: string) {
   window.open(link)
 }
@@ -37,18 +37,30 @@ onMounted(() => {
     </div>
 
     <page-module title="进行中的项目">
-      <div flex="~ wrap" w-full justify="between">
+      <div class="flex flex-wrap justify-between">
         <div
-          v-for="p in Projects" :key="p.link" bg-primary w="48%" mt-4 px-3 py-3 h-100px cursor-pointer
+          v-for="p in projects"
+          :key="p.link"
+          class="mt-12px px-24px py-16px w-49% bg-primary cursor-pointer"
           @click="goToProject(p.link)"
         >
-          <div text="18px">
-            {{ p.name }}
+          <div class="flex items-center">
+            <i class="icon-primary i-octicon-repo-16" />
+            <h2 class="ml-8px text-xl">
+              {{ p.name }}
+            </h2>
           </div>
-          <div text="12px" mt-4 line-clamp-2>
-            <a :title="p.description" @click.prevent>{{ p.description }}</a>
+
+          <div class="mt-12px text-sm opacity-80">
+            {{ p.description }}
           </div>
         </div>
+      </div>
+    </page-module>
+
+    <page-module title="developer-plus 最新动态">
+      <div class="opacity-70">
+        正在努力完善中...
       </div>
     </page-module>
   </div>
