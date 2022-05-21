@@ -5,7 +5,8 @@ const TypeWriteProps = {
   time: 0.1,
   delay: 1500,
   strings: TypeWriterData,
-  characterWidth: 1.6
+  characterWidth: 1.6,
+  colorAutoChange: false
 }
 
 const projects = await $fetch('/api/home/projects')
@@ -40,9 +41,7 @@ onMounted(() => {
     <page-module title="进行中项目">
       <div class="flex flex-wrap justify-between">
         <div
-          v-for="p in projects"
-          :key="p.link"
-          class="mt-12px px-24px py-16px w-49% bg-primary cursor-pointer"
+          v-for="p in projects" :key="p.link" class="mt-12px px-24px py-16px w-49% bg-primary cursor-pointer"
           @click="goToProject(p.link)"
         >
           <div class="flex items-center">
