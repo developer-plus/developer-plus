@@ -41,6 +41,27 @@ const teamMembers: ITeamMember[] = [
     githubLink: 'https://github.com/RainyNight9'
   },
   {
+    name: 'Crush',
+    avatar: 'https://avatars.githubusercontent.com/u/53544980?v=4',
+    tag: 'Core',
+    address: 'Hangzhou, China',
+    githubLink: 'https://github.com/CoderCrush'
+  },
+  {
+    name: 'chenfan',
+    avatar: 'https://avatars.githubusercontent.com/u/83797583?v=4',
+    tag: 'Core',
+    address: 'Guangzhou, China',
+    githubLink: 'https://github.com/chenfan0'
+  },
+  {
+    name: 'Hankai Xia',
+    avatar: 'https://avatars.githubusercontent.com/u/8510146?v=4',
+    tag: 'Core',
+    address: 'Shanghai, China',
+    githubLink: 'https://github.com/masterX89'
+  },
+  {
     name: 'Lo',
     avatar: 'https://avatars.githubusercontent.com/u/50254496?v=4',
     tag: 'Core',
