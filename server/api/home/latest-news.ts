@@ -13,6 +13,11 @@ export default defineEventHandler<News[]>(() => [
     time: '2022-05-23'
   },
   {
+    title: '周刊 - 第 2 期：developer-plus 官网上线了。',
+    link: withPrefix('weekly/blob/main/docs/issue-2.md'),
+    time: '2022-05-23'
+  },
+  {
     title: 'mini-unocss 更名为 amcss，目前已进入开发阶段。',
     link: withPrefix('amcss'),
     time: '2022-05-21'
