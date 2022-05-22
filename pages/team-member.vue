@@ -10,6 +10,22 @@ const options = {
 }
 
 const members = await $fetch<ITeamMember[]>('/api/team-members')
+const contributors = [
+  'MMmaXingXing',
+  'likui628',
+  'xiaoxiayan',
+  'wang01h2',
+  'jersonwei',
+  'jp-liu',
+  'chenfan0',
+  'hongl-1',
+  'kongcodes',
+  'TTiip'
+]
+
+function handleClick(githubName) {
+  window.open(`https://github.com/${githubName}`)
+}
 </script>
 
 <template>
@@ -50,8 +66,13 @@ const members = await $fetch<ITeamMember[]>('/api/team-members')
 
     <page-module title="贡献者">
       <div class="flex flex-wrap justify-between">
-        <div v-for="i in 1" :key="i" class="flex justify-center items-center mt-6px w-64px h-64px bg-primary border-rounded-1/2 text-sm">
-          虚以待位
+        <div
+          v-for="contributor in contributors"
+          :key="contributor"
+          class="overflow-hidden flex justify-center items-center cursor-pointer mt-6px w-64px h-64px bg-primary border-rounded-1/2 text-sm"
+          @click="handleClick(contributor)"
+        >
+          <img :src="`https://github.com/${contributor}.png`" :alt="contributor">
         </div>
       </div>
     </page-module>
