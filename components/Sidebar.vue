@@ -4,7 +4,7 @@ const friendLink = await $fetch('/api/friend-link')
 </script>
 
 <template>
-  <div class="px-32px py-24px w-380px min-h-screen border-l border-gray-200">
+  <div class="px-32px py-24px w-380px min-h-screen border-l border-gray-200 dark:border-gray-200/20">
     <div class="flex justify-between">
       <h2 class="text-2xl">
         developer-plus
