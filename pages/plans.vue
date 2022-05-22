@@ -14,7 +14,6 @@ const pageOptions = {
 const params: FetchTodoListParams = reactive({
   page: 1,
   per_page: PAGE_SIZE,
-  assignee: '*',
   state: 'all',
   labels: 'Pending'
 })
@@ -48,7 +47,7 @@ const setTab = (index) => {
 
 <template>
   <page-wrapper v-bind="pageOptions">
-    <main>
+    <main class="relative">
       <article>
         <section>
           <div class="flex space-x-1 p-1 bg-primary">
@@ -64,7 +63,7 @@ const setTab = (index) => {
           </div>
         </section>
         <section>
-          <ul class="todo-list my-4">
+          <ul v-if="!pending" class="todo-list my-4">
             <li v-for="todo in todoList" :key="todo.number" class="my-4">
               <todo-item v-bind="todo" />
             </li>
@@ -73,8 +72,11 @@ const setTab = (index) => {
       </article>
     </main>
 
-    <div class="mt-36px text-center">
-      <p class="opacity-70">
+    <div class="mt-36px text-center opacity-70">
+      <p v-if="pending">
+        正在疯狂加载中...
+      </p>
+      <p v-else>
         没有更多了...
       </p>
     </div>
