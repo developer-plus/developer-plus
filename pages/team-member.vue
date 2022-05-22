@@ -17,7 +17,6 @@ const contributors = [
   'wang01h2',
   'jersonwei',
   'jp-liu',
-  'chenfan0',
   'hongl-1',
   'kongcodes',
   'TTiip'
