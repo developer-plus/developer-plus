@@ -19,7 +19,7 @@ interface Response {
 const ISSUES_URL = 'https://api.github.com/repos/developer-plus/plans/issues'
 
 export default defineEventHandler(async (event) => {
-  const { assignee = 'none', page = 1, per_page = PAGE_SIZE, state = 'all', labels = 'ToDo' } = useQuery(event)
+  const { assignee = '*', page = 1, per_page = PAGE_SIZE, state = 'all', labels = 'Pending' } = useQuery(event)
   const params = { assignee, page, per_page, state, labels }
   const response: Response[] = await $fetch(ISSUES_URL, { params })
   const _response: TodoItem[] = response.map((todo) => {
