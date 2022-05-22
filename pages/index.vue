@@ -10,6 +10,7 @@ const TypeWriteProps = {
 }
 
 const projects = await $fetch('/api/home/projects')
+const latestNews = await $fetch('/api/home/latest-news')
 function goToProject(link: string) {
   window.open(link)
 }
@@ -33,9 +34,14 @@ onMounted(() => {
     </div>
 
     <page-module title="最新动态">
-      <div class="opacity-70">
-        正在努力完善中...
-      </div>
+      <template v-for="news in latestNews" :key="news.link">
+        <NuxtLink :to="news.link" target="_blank">
+          <button class="flex justify-between items-center py-8px pr-48px mt-12px w-full text-lg btn-primary">
+            <div>{{ news.title }}</div>
+            <div>{{ news.time }}</div>
+          </button>
+        </NuxtLink>
+      </template>
     </page-module>
 
     <page-module title="进行中项目">

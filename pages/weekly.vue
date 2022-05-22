@@ -15,7 +15,7 @@ const { data: weeklyData } = await useFetch('/api/weekly')
   <page-wrapper v-bind="weeklyOptions">
     <template v-for="weekly in weeklyData.data" :key="weekly.link">
       <NuxtLink :to="weekly.link" target="_blank">
-        <button class="flex justify-between items-center py-12px pr-48px w-full text-lg btn-primary">
+        <button class="flex justify-between items-center py-8px pr-48px mt-12px w-full text-lg btn-primary">
           <div>{{ weekly.title }}</div>
           <div>{{ weekly.time }}</div>
         </button>
