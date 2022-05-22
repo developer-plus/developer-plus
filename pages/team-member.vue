@@ -50,7 +50,7 @@ const members = await $fetch<ITeamMember[]>('/api/team-members')
 
     <page-module title="贡献者">
       <div class="flex flex-wrap justify-between">
-        <div v-for="i in 50" :key="i" class="flex justify-center items-center mt-6px w-64px h-64px bg-primary border-rounded-1/2 text-sm">
+        <div v-for="i in 1" :key="i" class="flex justify-center items-center mt-6px w-64px h-64px bg-primary border-rounded-1/2 text-sm">
           虚以待位
         </div>
       </div>
