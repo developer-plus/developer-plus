@@ -1,5 +1,5 @@
 export default defineEventHandler(() => ({
-  title: 'developer-plus 官网发布啦！',
+  title: 'developer-plus 官网上线了!',
   link: 'https://developer-plus.org'
 })
 )
