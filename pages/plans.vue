@@ -10,38 +10,79 @@ const pageOptions = {
   btnText: '新增计划',
   githubLink: 'https://github.com/developer-plus/plans'
 }
-
-const params: FetchTodoListParams = reactive({
-  page: 1,
-  per_page: PAGE_SIZE,
-  state: 'all',
-  labels: 'Pending'
-})
-
-const { data: todoList, pending, refresh } = await useFetch('/api/plans', { params })
-
+const todoStore = ref({})
+const todoPlans = ref([])
 const tabs = ['Pending', 'Processing', 'Done']
+const pageSaver = ref([1, 1, 1])
 const tabIndex = ref(0)
+const currentPageIndex = ref(0)
+const isNoMoreValue = ref([false, false, false])
+
+const fetchData = async (labels, type) => {
+  const { data: todoList } = await useFetch('/api/plans', {
+    params: {
+      state: 'all',
+      labels,
+      page: pageSaver.value[type],
+      per_page: PAGE_SIZE
+    } as FetchTodoListParams
+  })
+  if (todoList && todoList.value && todoList.value.length > 0) {
+    if (!todoStore.value[type])
+      todoStore.value[type] = []
+    const todoStoreLength = todoStore.value[type].length
+    // 新 todo 和旧 todo 数组去重
+    todoStore.value[type].splice(0, todoStoreLength, ...unique([...todoStore.value[type], ...todoList.value]))
+    // 判断去重前后的个数是否一致，如果一致则暴力认为没有更新的数据了
+    if (todoStore.value[type].length === todoStoreLength)
+      isNoMoreValue.value[type] = true
+    // 根据当前的个数设置下一次请求第几页
+    pageSaver.value[type] = Math.ceil(todoStore.value[type].length / PAGE_SIZE) < 1 ? 1 : Math.ceil(todoStore.value[type].length / PAGE_SIZE) + 1
+  }
+  else {
+    isNoMoreValue.value[type] = true
+  }
+}
+
+function unique(arr) {
+  const newObj = {}
+  const newArr = []
+  for (let i = 0; i < arr.length; i++) {
+    if (!newObj[arr[i].number]) {
+      newObj[arr[i].number] = true
+      newArr.push(arr[i])
+    }
+  }
+  return newArr
+}
+
+const handleTabChange = (index) => {
+  if (currentPageIndex.value === index)
+    return
+  currentPageIndex.value = index === -1 ? 0 : index
+  todoPlans.value = todoStore.value[index === -1 ? 0 : index]
+}
+
+const resetStatus = () => {
+  isNoMoreValue.value.splice(0, 3, ...[false, false, false])
+  pageSaver.value.splice(0, 3, ...[1, 1, 1])
+}
+
+const doFetch = async () => {
+  resetStatus()
+  fetchData(tabs[0], 0).then(() => { handleTabChange(-1) })
+  fetchData(tabs[1], 1)
+  fetchData(tabs[2], 2)
+}
+doFetch()
 
 const setTab = (index) => {
   tabIndex.value = Number(index)
-  switch (index) {
-    case 0:
-      params.labels = 'Pending'
-      refresh()
-      break
-    case 1:
-      params.labels = 'Processing'
-      refresh()
-      break
-    case 2:
-      params.labels = 'Done'
-      refresh()
-      break
-    default:
-      refresh()
-      break
-  }
+  handleTabChange(index)
+}
+
+const queryMoreTodo = () => {
+  fetchData(tabs[currentPageIndex.value], currentPageIndex.value)
 }
 </script>
 
@@ -63,8 +104,8 @@ const setTab = (index) => {
           </div>
         </section>
         <section>
-          <ul v-if="!pending" class="todo-list my-4">
-            <li v-for="todo in todoList" :key="todo.number" class="my-4">
+          <ul class="todo-list my-4">
+            <li v-for="todo in todoPlans" :key="todo.number" class="my-4">
               <todo-item v-bind="todo" />
             </li>
           </ul>
@@ -73,12 +114,13 @@ const setTab = (index) => {
     </main>
 
     <div class="mt-36px text-center opacity-70">
-      <p v-if="pending">
-        正在疯狂加载中...
-      </p>
-      <p v-else>
+      <p v-if="isNoMoreValue[currentPageIndex]">
         没有更多了...
+      </p>
+      <p v-else class="cursor-pointer" @click="queryMoreTodo">
+        加载更多...
       </p>
     </div>
   </page-wrapper>
 </template>
+
