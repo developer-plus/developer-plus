@@ -1,2 +1,2 @@
 /* 默认分页大小 */
-export const PAGE_SIZE = 100
+export const PAGE_SIZE = 30
