@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PAGE_SIZE } from '../constants/index'
+import { PAGE_SIZE } from '~/constants'
 import type { FetchTodoListParams } from '~/types'
 
 const pageOptions = {
