@@ -1,6 +1,38 @@
 <script setup lang="ts">
+import { GITHUB_TOKEN } from '~/constants'
 const coreMembers = await $fetch('/api/core-members')
 const friendLink = await $fetch('/api/friend-link')
+
+const interviewIssue = reactive({
+  title: '',
+  url: ''
+})
+
+$fetch('https://api.github.com/graphql', {
+  method: 'post',
+  body: {
+    query: `
+      query {
+        repository(owner: "developer-plus", name: "interview") {
+          pinnedIssues(last: 3) {
+            nodes{
+              issue {
+                title
+                url
+              }
+            }
+          }
+        }
+      }`
+  },
+  headers: {
+    Authorization: `token ${GITHUB_TOKEN}`
+  }
+}).then((res) => {
+  const { title, url } = res.data.repository.pinnedIssues.nodes[0].issue
+  interviewIssue.title = title
+  interviewIssue.url = url
+})
 </script>
 
 <template>
@@ -67,10 +99,10 @@ const friendLink = await $fetch('/api/friend-link')
       </h3>
 
       <div class="mt-16px opacity-70">
-        Vue 实例挂载的过程中发生了什么?
+        {{ interviewIssue.title }}
       </div>
 
-      <a class="btn-primary-small mt-16px" href="https://github.com/developer-plus/interview/issues/1" target="_blank">
+      <a class="btn-primary-small mt-16px" :href="interviewIssue.url" target="_blank">
         前往答题
       </a>
     </div>
