@@ -76,6 +76,9 @@ onUnmounted(() => {
     <nuxt-link class="icon-primary" to="/team-member" data-key="team-member" title="Team member">
       <div class="i-ri-team-line" />
     </nuxt-link>
+    <nuxt-link class="icon-primary" to="/sponsors" data-key="sponsors" title="Sponsors">
+      <div class="i-simple-icons-githubsponsors" />
+    </nuxt-link>
     <div ref="boxRef" class="absolute top-2 right-0 translate-x-50% w-2 h-2 bg-light-900 rounded-full" />
   </div>
 </template>
