@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { GITHUB_TOKEN } from '~/constants'
+
 const coreMembers = await $fetch('/api/core-members')
 const friendLink = await $fetch('/api/friend-link')
 
