@@ -19,8 +19,7 @@ const contributors = [
   'jp-liu',
   'hongl-1',
   'kongcodes',
-  'TTiip',
-  'luckept'
+  'TTiip'
 ]
 
 function handleClick(githubName) {

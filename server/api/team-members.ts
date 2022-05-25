@@ -74,6 +74,14 @@ const teamMembers: ITeamMember[] = [
     address: 'Chengdu, China',
     link: 'http://zyob.top',
     githubLink: 'https://github.com/chris-zhu'
+  },
+  {
+    name: 'luckept',
+    tag: 'Core',
+    avatar: 'https://avatars.githubusercontent.com/u/83466315?v=4',
+    address: 'Chengdu, China',
+    githubLink: 'https://github.com/luckept',
+    twitterLink: 'https://twitter.com/coderLuckept'
   }
 ]
 
