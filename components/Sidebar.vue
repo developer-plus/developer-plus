@@ -67,10 +67,10 @@ const friendLink = await $fetch('/api/friend-link')
       </h3>
 
       <div class="mt-16px opacity-70">
-        手写题：如何实现数组去重？
+        手写题：如何实现call，apply，bind？
       </div>
 
-      <a class="btn-primary-small mt-16px" href="https://github.com/developer-plus/interview/issues/2" target="_blank">
+      <a class="btn-primary-small mt-16px" href="https://github.com/developer-plus/interview/issues/3" target="_blank">
         前往答题
       </a>
     </div>
