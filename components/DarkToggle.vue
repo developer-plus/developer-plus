@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const color = useColorMode()
+import { isDark } from '#imports'
+
 function toggleDark() {
-  color.preference = color.value === 'dark' ? 'light' : 'dark'
+  isDark.value = !isDark.value
 }
 </script>
 
