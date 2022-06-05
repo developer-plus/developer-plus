@@ -8,9 +8,14 @@ const withPrefix = (s: string) => `https://github.com/developer-plus/${s}`
 
 export default defineEventHandler<News[]>(() => [
   {
+    title: '周刊 - 第 4 期 ： developer-plus 公众号上线了。',
+    time: '2022-06-06',
+    link: 'https://github.com/developer-plus/weekly/blob/main/docs/issue-3.md'
+  },
+  {
     title: '周刊 - 第 3 期 ： 六周年快乐。',
     time: '2022-05-30',
-    link: 'https://github.com/developer-plus/weekly/blob/main/docs/issue-3.md'
+    link: 'https://github.com/developer-plus/weekly/blob/main/docs/issue-4.md'
   },
   {
     title: 'developer-plus 官网上线了!',
