@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const coreMembers = await $fetch('/api/core-members')
 const friendLink = await $fetch('/api/friend-link')
+const { data } = await useFetch('/api/interview')
+const interview = data.value[0] ? data.value[0] : { title: '暂无数据', url: '' }
 </script>
 
 <template>
@@ -67,10 +69,10 @@ const friendLink = await $fetch('/api/friend-link')
       </h3>
 
       <div class="mt-16px opacity-70">
-        let，const，var的区别？
+        {{ interview.title }}
       </div>
 
-      <a class="btn-primary-small mt-16px" href="https://github.com/developer-plus/interview/issues/7" target="_blank">
+      <a v-if="interview.url" class="btn-primary-small mt-16px" :href="interview.url" target="_blank">
         前往答题
       </a>
     </div>
