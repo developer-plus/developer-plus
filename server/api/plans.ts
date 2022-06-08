@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from './../../constants/index'
+import { PAGE_SIZE } from '~/constants/index'
 import type { TodoItem } from '~~/types'
 
 interface Assignee {
