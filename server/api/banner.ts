@@ -1,5 +1,5 @@
 export default defineEventHandler(() => ({
-  title: 'developer-plus 官网上线了!',
-  link: 'https://developer-plus.org'
+  title: '周刊 - 第 5 期 ： iconfont 回来了。',
+  link: 'https://github.com/developer-plus/weekly/blob/main/docs/issue-5.md'
 })
 )
