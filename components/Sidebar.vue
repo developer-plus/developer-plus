@@ -37,11 +37,11 @@ const interview = data.value[0] ? data.value[0] : { title: '暂无数据', url: 
 
     <div class="mt-36px">
       <h3 class="text-xl">
-        扫描它，然后加入我
+        加入我们
       </h3>
 
-      <div class="mt-16px border border-gray-200 dark:border-gray-200/20">
-        <img class="w-full" src="https://hongbusi.oss-cn-hangzhou.aliyuncs.com/qrcode.jpg" alt="">
+      <div class="mt-16px opacity-70">
+        <p>添加微信号 `Hongbusi16530`，了解更多。</p>
       </div>
     </div>
 
