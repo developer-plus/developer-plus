@@ -2,6 +2,11 @@ import type { IWeeklyData } from '~~/types'
 
 const weeklyDataList: IWeeklyData[] = [
   {
+    title: '第 7 期 ： Facebook 标志的故事',
+    time: '2022-06-27',
+    link: 'https://github.com/developer-plus/weekly/blob/main/docs/issue-7.md'
+  },
+  {
     title: '第 6 期 ： 一个轻量的 canvas 库',
     time: '2022-06-20',
     link: 'https://github.com/developer-plus/weekly/blob/main/docs/issue-6.md'
