@@ -1,5 +1,5 @@
 export default defineEventHandler(() => ({
-  title: '周刊 - 第 7 期 ： Facebook 标志的故事',
-  link: 'https://github.com/developer-plus/weekly/blob/main/docs/issue-7.md'
+  title: '周刊 - 第 8 期 ： Vue2.7 尝鲜，代号 “Naruto”',
+  link: 'https://github.com/developer-plus/weekly/blob/main/docs/weekly-8.md'
 })
 )
