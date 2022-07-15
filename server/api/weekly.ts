@@ -2,6 +2,11 @@ import type { IWeeklyData } from '~~/types'
 
 const weeklyDataList: IWeeklyData[] = [
   {
+    title: '第 9 期',
+    time: '2022-07-11',
+    link: 'https://github.com/developer-plus/weekly/blob/main/docs/weekly-9.md'
+  },
+  {
     title: '第 8 期 ： Vue2.7 尝鲜，代号 “Naruto”',
     time: '2022-07-04',
     link: 'https://github.com/developer-plus/weekly/blob/main/docs/weekly-8.md'
